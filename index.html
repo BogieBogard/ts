@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TypeScript Array Methods - A game for learning TypeScript array methods</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url"           content="https://typescriptfroggy.com">
+    <meta property="og:type"          content="website">
+    <meta property="og:title"         content="TypeScript Array Methods">
+    <meta property="og:description"   content="A game for learning TypeScript array methods">
+    <meta property="og:image"         content="https://flexboxfroggy.com/images/screenshot.png">
+    <meta property="fb:app_id"        content="916849395036923">
+    <meta name="twitter:url"          content="https://flexboxfroggy.com">
+    <meta name="twitter:title"        content="Flexbox Froggy">
+    <meta name="twitter:description"  content="A game for learning CSS flexbox">
+    <meta name="twitter:image"        content="https://flexboxfroggy.com/images/screenshot.png">
+    <meta name="google-adsense-account" content="ca-pub-9569380550956585">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans|Fredoka+One|Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <section id="sidebar">
+      <div class="header">
+        <div>
+          <h1 class="title">TypeScript Array Methods</h1>
+        </div>
+        <div id="level-counter">
+          <span class="arrow left">
+            <span class="triangle"></span>
+          </span>
+          <span id="level-indicator">
+            <span id="labelLevel" class="translate">Level</span>
+            <span class="current">1</span>
+            <span id="labelOf" class="translate">of</span>
+            <span class="total">1</span>
+            <span class="caret">▾</span>
+          </span>
+          <span class="arrow right">
+            <span class="triangle"></span>
+          </span>
+          <div id="levelsWrapper" class="tooltip">
+            <div id="levels"></div>
+            <div id="labelReset" class="translate">Reset</div>
+          </div>
+        </div>
+      </div>
+      <p id="instructions"></p>
+      <div id="editor">
+          <div id="css">
+          <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
+          <pre id="before"></pre>
+          <textarea id="code" autofocus autocapitalize="none" spellcheck="false" placeholder="// Write your TypeScript code here"></textarea>
+          <pre id="after"></pre>
+        </div>
+        <button id="next" class="translate">Next</button>
+      </div>
+
+      <div class="credits" style="margin-bottom: 1rem;">
+        <span id="gridGarden" class="translate">Want to learn more from official documentation sources? Check out the docs of </span> <a href="https://www.typescriptlang.org/docs/">TypeScript</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array Methods</a>.
+      </div>
+    </section>
+    <section id="view">
+      <div id="board">
+        <div id="pond">
+        </div>
+        <div id="background">
+        </div>
+      </div>
+    </section>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/docs.js"></script>
+    <script src="js/messages.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>
+
