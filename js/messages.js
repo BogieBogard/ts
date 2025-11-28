@@ -110,7 +110,7 @@ var messages = {
     'yo': 'Ìpele tó kàn',
   },
   labelFooter: {
-    'en': 'TypeScript Array Methods is created by',
+    'en': 'TypeScript (TS) Practice is created by',
     'af': 'Flexbox Froggy is ontwerp deur',
     'he': 'Flexbox Froggy נוצר על ידי',
     'ro': 'Flexbox Froggy este creat de',
@@ -275,7 +275,7 @@ var messages = {
     'yo': 'tí'
   },
   title: {
-    'en': 'TypeScript Array Methods - A game for learning TypeScript array methods',
+    'en': 'TypeScript (TS) Practice - A game for learning TypeScript array methods',
     'af': 'Flexbox Froggy - `n Spel vir die leer van CSS flexbox',
     'he': 'Flexbox Froggy - משחק ללמידת CSS flexbox',
     'ro': 'Flexbox Froggy - Un joc pentru a învăța CSS flexbox',

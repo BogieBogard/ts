@@ -2,7 +2,7 @@ var levels = [
   {
     name: 'map 1',
     instructions: {
-      'en': '<p>Welcome to TypeScript Array Methods! Use the <code>map</code> method to transform each element in the array. The <code>map</code> method creates a new array by calling a function on every element.</p><p>For example, to double each number: <code>arr.map(x => x * 2)</code></p><p>Transform the array [1, 2, 3] to [2, 4, 6] by doubling each number.</p>',
+      'en': '<p>Welcome to TypeScript (TS) Practice! Use the <code>map</code> method to transform each element in the array. The <code>map</code> method creates a new array by calling a function on every element.</p><p>For example, to double each number: <code>arr.map(x => x * 2)</code></p><p>Transform the array [1, 2, 3] to [2, 4, 6] by doubling each number.</p>',
     },
     input: [1, 2, 3],
     expected: [2, 4, 6],
@@ -664,6 +664,6 @@ var levels = [
 var levelWin = {
   name: 'win',
   instructions: {
-    'en': '<p>Congratulations! You\'ve completed all the TypeScript Array Methods challenges! 🎉</p><p>You\'ve learned how to use <code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>includes</code>, <code>sort</code>, <code>reverse</code>, <code>slice</code>, <code>concat</code>, <code>join</code>, <code>indexOf</code>, <code>flat</code>, and <code>flatMap</code> to solve common coding problems.</p><p>Keep practicing to master these essential array methods!</p>',
+    'en': '<p>Congratulations! You\'ve completed all the TypeScript (TS) Practice challenges! 🎉</p><p>You\'ve learned how to use <code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>includes</code>, <code>sort</code>, <code>reverse</code>, <code>slice</code>, <code>concat</code>, <code>join</code>, <code>indexOf</code>, <code>flat</code>, and <code>flatMap</code> to solve common coding problems.</p><p>Keep practicing to master these essential array methods!</p>',
   }
 };
