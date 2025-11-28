@@ -204,6 +204,7 @@ pre {
 
 pre {
   color: #64748b;
+  white-space: pre-wrap;
 }
 
 #css {

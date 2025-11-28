@@ -262,8 +262,8 @@ var game = {
     $('#levelsWrapper').hide();
     $('.level-marker').removeClass('current').eq(this.level).addClass('current');
     $('#level-counter .current').text(this.level + 1);
-    $('#before').text(level.before);
-    $('#after').text(level.after);
+    $('#before').text(level.before.replace(/\n\s+/g, '\n'));
+    $('#after').text(level.after.replace(/\n\s+/g, '\n'));
     $('#next').removeClass('animated animation').addClass('disabled');
 
     var instructions = level.instructions[game.language] || level.instructions.en;
