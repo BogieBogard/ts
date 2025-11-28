@@ -8,7 +8,9 @@ var levels = [
     expected: [2, 4, 6],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+    mdnName: 'Array.prototype.map()'
   },
   {
     name: 'map 2',
@@ -19,7 +21,9 @@ var levels = [
     expected: ["1", "2", "3"],
     before: 'const result: string[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+    mdnName: 'Array.prototype.map()'
   },
   {
     name: 'filter 1',
@@ -30,7 +34,9 @@ var levels = [
     expected: [4, 5],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
+    mdnName: 'Array.prototype.filter()'
   },
   {
     name: 'filter 2',
@@ -41,7 +47,9 @@ var levels = [
     expected: [2, 4, 6],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
+    mdnName: 'Array.prototype.filter()'
   },
   {
     name: 'reduce 1',
@@ -52,7 +60,9 @@ var levels = [
     expected: 10,
     before: 'const result: number = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'find 1',
@@ -63,7 +73,9 @@ var levels = [
     expected: 3,
     before: 'const result: number | undefined = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find',
+    mdnName: 'Array.prototype.find()'
   },
   {
     name: 'some 1',
@@ -74,7 +86,9 @@ var levels = [
     expected: true,
     before: 'const result: boolean = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some',
+    mdnName: 'Array.prototype.some()'
   },
   {
     name: 'every 1',
@@ -85,7 +99,9 @@ var levels = [
     expected: true,
     before: 'const result: boolean = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every',
+    mdnName: 'Array.prototype.every()'
   },
   {
     name: 'includes 1',
@@ -96,7 +112,9 @@ var levels = [
     expected: true,
     before: 'const result: boolean = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes',
+    mdnName: 'Array.prototype.includes()'
   },
   {
     name: 'map and filter',
@@ -107,7 +125,9 @@ var levels = [
     expected: [6, 8, 10],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+    mdnName: 'Array.prototype.map()'
   },
   {
     name: 'reduce advanced',
@@ -118,7 +138,9 @@ var levels = [
     expected: 9,
     before: 'const result: number = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'map with objects',
@@ -129,7 +151,9 @@ var levels = [
     expected: [1750, 150],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+    mdnName: 'Array.prototype.map()'
   },
   {
     name: 'filter with objects',
@@ -140,7 +164,9 @@ var levels = [
     expected: [{name: "Rudolph", age: 9}, {name: "Cupid", age: 9}],
     before: 'const result: {name: string, age: number}[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
+    mdnName: 'Array.prototype.filter()'
   },
   {
     name: 'sort 1',
@@ -151,7 +177,9 @@ var levels = [
     expected: [1, 2, 3, 4, 5],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
+    mdnName: 'Array.prototype.sort()'
   },
   {
     name: 'sort 2',
@@ -162,7 +190,9 @@ var levels = [
     expected: [5, 4, 3, 2, 1],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
+    mdnName: 'Array.prototype.sort()'
   },
   {
     name: 'reverse',
@@ -173,7 +203,9 @@ var levels = [
     expected: [5, 4, 3, 2, 1],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse',
+    mdnName: 'Array.prototype.reverse()'
   },
   {
     name: 'slice 1',
@@ -184,7 +216,9 @@ var levels = [
     expected: [20, 30],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
+    mdnName: 'Array.prototype.slice()'
   },
   {
     name: 'slice 2',
@@ -195,7 +229,9 @@ var levels = [
     expected: [30, 40, 50],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
+    mdnName: 'Array.prototype.slice()'
   },
   {
     name: 'concat',
@@ -206,7 +242,9 @@ var levels = [
     expected: [1, 2, 3, 4, 5, 6],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat',
+    mdnName: 'Array.prototype.concat()'
   },
   {
     name: 'join',
@@ -217,7 +255,9 @@ var levels = [
     expected: "a,b,c",
     before: 'const result: string = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join',
+    mdnName: 'Array.prototype.join()'
   },
   {
     name: 'indexOf',
@@ -228,7 +268,9 @@ var levels = [
     expected: 2,
     before: 'const result: number = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf',
+    mdnName: 'Array.prototype.indexOf()'
   },
   {
     name: 'flat',
@@ -239,7 +281,9 @@ var levels = [
     expected: [1, 2, 3, 4, 5],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat',
+    mdnName: 'Array.prototype.flat()'
   },
   {
     name: 'map 3',
@@ -250,7 +294,9 @@ var levels = [
     expected: ["HELLO", "WORLD"],
     before: 'const result: string[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+    mdnName: 'Array.prototype.map()'
   },
   {
     name: 'filter 3',
@@ -261,7 +307,9 @@ var levels = [
     expected: [4, 5, 6, 7],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
+    mdnName: 'Array.prototype.filter()'
   },
   {
     name: 'reduce 2',
@@ -272,7 +320,9 @@ var levels = [
     expected: 4,
     before: 'const result: number = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'reduce 3',
@@ -283,7 +333,9 @@ var levels = [
     expected: {fruit: 2, vegetable: 1},
     before: 'const result: Record<string, number> = ',
     after: ';',
-    codeLines: 5
+    codeLines: 5,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'find 2',
@@ -294,7 +346,9 @@ var levels = [
     expected: {name: "Bob", age: 30},
     before: 'const result: {name: string, age: number} | undefined = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find',
+    mdnName: 'Array.prototype.find()'
   },
   {
     name: 'map filter reduce',
@@ -305,7 +359,9 @@ var levels = [
     expected: 90,
     before: 'const result: number = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'flatMap',
@@ -316,7 +372,9 @@ var levels = [
     expected: [1, 2, 2, 4, 3, 6],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap',
+    mdnName: 'Array.prototype.flatMap()'
   },
   {
     name: 'map with nested',
@@ -327,7 +385,9 @@ var levels = [
     expected: [1, 3, 5],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+    mdnName: 'Array.prototype.map()'
   },
   {
     name: 'real world 1',
@@ -338,7 +398,9 @@ var levels = [
     expected: 65,
     before: 'const result: number = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'real world 2',
@@ -349,7 +411,9 @@ var levels = [
     expected: ["Santa Claus", "Mrs Claus"],
     before: 'const result: string[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+    mdnName: 'Array.prototype.map()'
   },
   {
     name: 'object keys',
@@ -360,7 +424,9 @@ var levels = [
     expected: ["name", "age", "home"],
     before: 'const result: string[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys',
+    mdnName: 'Object.keys()'
   },
   {
     name: 'object values',
@@ -371,7 +437,9 @@ var levels = [
     expected: ["Santa", 1750, "North Pole"],
     before: 'const result: (string | number)[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values',
+    mdnName: 'Object.values()'
   },
   {
     name: 'object entries',
@@ -382,7 +450,9 @@ var levels = [
     expected: [["a", 1], ["b", 2], ["c", 3]],
     before: 'const result: [string, number][] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries',
+    mdnName: 'Object.entries()'
   },
   {
     name: 'destructuring arrays',
@@ -393,7 +463,9 @@ var levels = [
     expected: [10, 20],
     before: 'const [first, second]: number[] = ',
     after: ';\nconst result = [first, second];',
-    codeLines: 4
+    codeLines: 4,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment',
+    mdnName: 'Destructuring assignment'
   },
   {
     name: 'destructuring objects',
@@ -404,7 +476,9 @@ var levels = [
     expected: ["Frosty", 5],
     before: 'const {name, age}: {name: string, age: number, city: string} = ',
     after: ';\nconst result = [name, age];',
-    codeLines: 4
+    codeLines: 4,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment',
+    mdnName: 'Destructuring assignment'
   },
   {
     name: 'spread operator',
@@ -415,7 +489,9 @@ var levels = [
     expected: [1, 2, 3, 4, 5],
     before: 'const arr2 = [4, 5];\n    const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax',
+    mdnName: 'Spread syntax'
   },
   {
     name: 'spread objects',
@@ -426,7 +502,9 @@ var levels = [
     expected: {a: 1, b: 3, c: 4},
     before: 'const obj = arr;\n    const obj2 = {b: 3, c: 4};\n    const result: {a: number, b: number, c: number} = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax',
+    mdnName: 'Spread syntax'
   },
   {
     name: 'string methods',
@@ -437,7 +515,9 @@ var levels = [
     expected: ["HELLO", "WORLD"],
     before: 'const str: string = arr;\n    const result: string[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split',
+    mdnName: 'String.prototype.split()'
   },
   {
     name: 'string replace',
@@ -448,7 +528,9 @@ var levels = [
     expected: "hello-world-test",
     before: 'const str: string = arr;\n    const result: string = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace',
+    mdnName: 'String.prototype.replace()'
   },
   {
     name: 'sets',
@@ -459,7 +541,9 @@ var levels = [
     expected: [1, 2, 3, 4],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set',
+    mdnName: 'Set'
   },
   {
     name: 'maps',
@@ -470,7 +554,9 @@ var levels = [
     expected: [["a", 1], ["b", 2]],
     before: 'const map = new Map(arr);\n    const result: [string, number][] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map',
+    mdnName: 'Map'
   },
   {
     name: 'optional chaining',
@@ -481,7 +567,9 @@ var levels = [
     expected: "NYC",
     before: 'const data = arr;\n    const result: string | undefined = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining',
+    mdnName: 'Optional chaining'
   },
   {
     name: 'nullish coalescing',
@@ -492,7 +580,9 @@ var levels = [
     expected: "hello",
     before: 'const value: string | null | undefined = arr;\n    const result: string = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing',
+    mdnName: 'Nullish coalescing'
   },
   {
     name: 'template literals',
@@ -503,7 +593,9 @@ var levels = [
     expected: "Hello, Rudolph! You are 9 years old.",
     before: 'const {name, age} = arr;\n    const result: string = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals',
+    mdnName: 'Template literals'
   },
   {
     name: 'object from entries',
@@ -514,7 +606,9 @@ var levels = [
     expected: {name: "Alice", age: 25},
     before: 'const result: {name: string, age: number} = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries',
+    mdnName: 'Object.fromEntries()'
   },
   {
     name: 'object assign',
@@ -525,7 +619,9 @@ var levels = [
     expected: {a: 1, b: 2},
     before: 'const obj = arr;\n    const source = {b: 2};\n    const result: {a: number, b: number} = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign',
+    mdnName: 'Object.assign()'
   },
   {
     name: 'type checking',
@@ -536,7 +632,9 @@ var levels = [
     expected: ["hello", "world"],
     before: 'const result: string[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof',
+    mdnName: 'typeof'
   },
   {
     name: 'closures',
@@ -547,7 +645,9 @@ var levels = [
     expected: 12,
     before: 'const {multiplier, number} = arr;\n    const createMultiplier = (mult: number) => (n: number) => n * mult;\n    const multiply = createMultiplier(multiplier);\n    const result: number = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures',
+    mdnName: 'Closures'
   },
   {
     name: 'higher order functions',
@@ -558,7 +658,9 @@ var levels = [
     expected: [2, 4, 6, 8],
     before: 'const myMap = (arr: number[], fn: (x: number) => number) => arr.map(fn);\n    const result: number[] = myMap(',
     after: ', x => x * 2);',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function',
+    mdnName: 'First-class Function'
   },
   {
     name: 'recursion basics',
@@ -569,7 +671,9 @@ var levels = [
     expected: 120,
     before: 'const n = arr;\n    const factorial = (n: number): number => n <= 1 ? 1 : n * factorial(n - 1);\n    const result: number = factorial(',
     after: ');',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Glossary/Recursion',
+    mdnName: 'Recursion'
   },
   {
     name: 'date manipulation',
@@ -580,7 +684,9 @@ var levels = [
     expected: 2024,
     before: 'const dateStr = arr;\n    const date = new Date(dateStr);\n    const result: number = date.',
     after: '();',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date',
+    mdnName: 'Date'
   },
   {
     name: 'regex basics',
@@ -591,7 +697,9 @@ var levels = [
     expected: ["123", "456"],
     before: 'const str: string = arr;\n    const result: string[] | null = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp',
+    mdnName: 'RegExp'
   },
   {
     name: 'nested object access',
@@ -602,7 +710,9 @@ var levels = [
     expected: ["Alice", "Bob"],
     before: 'const result: string[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects',
+    mdnName: 'Working with Objects'
   },
   {
     name: 'computed properties',
@@ -613,7 +723,9 @@ var levels = [
     expected: {dynamicKey: "value"},
     before: 'const key = arr;\n    const result: {[key: string]: string} = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer',
+    mdnName: 'Object initializer'
   },
   {
     name: 'array methods with objects',
@@ -624,7 +736,9 @@ var levels = [
     expected: {a: 2, b: 4, c: 6},
     before: 'const obj = arr;\n    const result: {a: number, b: number, c: number} = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries',
+    mdnName: 'Object.entries()'
   },
   {
     name: 'string manipulation advanced',
@@ -635,7 +749,9 @@ var levels = [
     expected: "Hello World",
     before: 'const str: string = arr;\n    const result: string = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split',
+    mdnName: 'String.prototype.split()'
   },
   {
     name: 'filter and transform objects',
@@ -646,7 +762,9 @@ var levels = [
     expected: ["Prancer", "Vixen"],
     before: 'const result: string[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
+    mdnName: 'Array.prototype.filter()'
   },
   {
     name: 'reduce with objects',
@@ -657,7 +775,9 @@ var levels = [
     expected: {a: 1, b: 2, c: 3},
     before: 'const result: Record<string, number> = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'frequency map',
@@ -668,7 +788,9 @@ var levels = [
     expected: {a: 3, b: 2, c: 1},
     before: 'const result: Record<string, number> = ',
     after: ';',
-    codeLines: 5
+    codeLines: 5,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'group by',
@@ -679,7 +801,9 @@ var levels = [
     expected: {A: [{id: 1, type: 'A'}, {id: 3, type: 'A'}], B: [{id: 2, type: 'B'}]},
     before: 'const result: Record<string, {id: number, type: string}[]> = ',
     after: ';',
-    codeLines: 6
+    codeLines: 6,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'intersection',
@@ -690,7 +814,9 @@ var levels = [
     expected: [3, 4, 5],
     before: 'const arr2 = [3, 4, 5, 6, 7];\n    const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
+    mdnName: 'Array.prototype.filter()'
   },
   {
     name: 'difference',
@@ -701,7 +827,9 @@ var levels = [
     expected: [1, 2],
     before: 'const arr2 = [3, 4, 5, 6, 7];\n    const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
+    mdnName: 'Array.prototype.filter()'
   },
   {
     name: 'unique objects',
@@ -712,7 +840,9 @@ var levels = [
     expected: [{id: 1, val: 'a'}, {id: 2, val: 'b'}],
     before: 'const result: {id: number, val: string}[] = ',
     after: ';',
-    codeLines: 5
+    codeLines: 5,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set',
+    mdnName: 'Set'
   },
   {
     name: 'zip',
@@ -723,7 +853,9 @@ var levels = [
     expected: [["a", 1], ["b", 2], ["c", 3]],
     before: 'const arr2 = [1, 2, 3];\n    const result: [string, number][] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+    mdnName: 'Array.prototype.map()'
   },
   {
     name: 'partition',
@@ -734,7 +866,9 @@ var levels = [
     expected: [[1, 3, 5], [2, 4, 6]],
     before: 'const result: number[][] = ',
     after: ';',
-    codeLines: 5
+    codeLines: 5,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'flatten deep',
@@ -745,7 +879,9 @@ var levels = [
     expected: [1, 2, 3, 4],
     before: 'const result: number[] = ',
     after: ';',
-    codeLines: 3
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat',
+    mdnName: 'Array.prototype.flat()'
   },
   {
     name: 'most frequent',
@@ -756,7 +892,9 @@ var levels = [
     expected: 2,
     before: 'const result: number = ',
     after: ';',
-    codeLines: 6
+    codeLines: 6,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Array.prototype.reduce()'
   },
   {
     name: 'valid anagram',
@@ -767,7 +905,9 @@ var levels = [
     expected: true,
     before: 'const str2 = "silent";\n    const result: boolean = ',
     after: ';',
-    codeLines: 4
+    codeLines: 4,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
+    mdnName: 'Array.prototype.sort()'
   },
   {
     name: 'chunk',
@@ -778,7 +918,9 @@ var levels = [
     expected: [[1, 2], [3, 4], [5]],
     before: 'const size = 2;\n    const result: number[][] = ',
     after: ';',
-    codeLines: 6
+    codeLines: 6,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
+    mdnName: 'Array.prototype.slice()'
   },
   {
     name: 'merge sorted',
@@ -789,7 +931,9 @@ var levels = [
     expected: [1, 2, 3, 4, 5, 6],
     before: 'const arr2 = [2, 4, 6];\n    const result: number[] = ',
     after: ';',
-    codeLines: 5
+    codeLines: 5,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat',
+    mdnName: 'Array.prototype.concat()'
   }
 ];
 

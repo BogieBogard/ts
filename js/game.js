@@ -321,6 +321,15 @@ var game = {
     game.createPondBubbles();
     game.createFlowLines();
 
+    // Update MDN link
+    if (level.mdn) {
+      $('#mdnLink').attr('href', level.mdn).text(level.mdnName || 'MDN Documentation').show();
+      $('#gridGarden').show();
+    } else {
+      $('#mdnLink').hide();
+      $('#gridGarden').hide();
+    }
+
     game.changed = false;
     game.executeCode();
     game.check();
