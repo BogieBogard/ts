@@ -6,7 +6,7 @@ var levels = [
     },
     input: [1, 2, 3],
     expected: [2, 4, 6],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -17,7 +17,7 @@ var levels = [
     },
     input: [1, 2, 3],
     expected: ["1", "2", "3"],
-    before: 'const result = ',
+    before: 'const result: string[] = ',
     after: ';',
     codeLines: 3
   },
@@ -28,7 +28,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5],
     expected: [4, 5],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -39,7 +39,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5, 6],
     expected: [2, 4, 6],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -50,7 +50,7 @@ var levels = [
     },
     input: [1, 2, 3, 4],
     expected: 10,
-    before: 'const result = ',
+    before: 'const result: number = ',
     after: ';',
     codeLines: 3
   },
@@ -61,7 +61,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5],
     expected: 3,
-    before: 'const result = ',
+    before: 'const result: number | undefined = ',
     after: ';',
     codeLines: 3
   },
@@ -72,7 +72,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5],
     expected: true,
-    before: 'const result = ',
+    before: 'const result: boolean = ',
     after: ';',
     codeLines: 3
   },
@@ -83,7 +83,7 @@ var levels = [
     },
     input: [2, 4, 6, 8],
     expected: true,
-    before: 'const result = ',
+    before: 'const result: boolean = ',
     after: ';',
     codeLines: 3
   },
@@ -94,7 +94,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5],
     expected: true,
-    before: 'const result = ',
+    before: 'const result: boolean = ',
     after: ';',
     codeLines: 3
   },
@@ -105,7 +105,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5],
     expected: [6, 8, 10],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -116,29 +116,29 @@ var levels = [
     },
     input: [3, 7, 2, 9, 1],
     expected: 9,
-    before: 'const result = ',
+    before: 'const result: number = ',
     after: ';',
     codeLines: 3
   },
   {
     name: 'map with objects',
     instructions: {
-      'en': '<p>Use <code>map</code> to transform an array of objects. Extract a property from each object.</p><p>From [{name: "Alice", age: 25}, {name: "Bob", age: 30}], extract the ages: [25, 30]</p>',
+      'en': '<p>Use <code>map</code> to transform an array of objects. Extract a property from each object.</p><p>From [{name: "Santa", age: 1750}, {name: "Elf", age: 150}], extract the ages: [1750, 150]</p>',
     },
-    input: [{name: "Alice", age: 25}, {name: "Bob", age: 30}],
-    expected: [25, 30],
-    before: 'const result = ',
+    input: [{name: "Santa", age: 1750}, {name: "Elf", age: 150}],
+    expected: [1750, 150],
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
   {
     name: 'filter with objects',
     instructions: {
-      'en': '<p>Use <code>filter</code> to filter an array of objects based on a property value.</p><p>From [{name: "Alice", age: 25}, {name: "Bob", age: 30}, {name: "Charlie", age: 20}], get only people with age >= 25: [{name: "Alice", age: 25}, {name: "Bob", age: 30}]</p>',
+      'en': '<p>Use <code>filter</code> to filter an array of objects based on a property value.</p><p>From [{name: "Rudolph", age: 9}, {name: "Comet", age: 8}, {name: "Cupid", age: 9}], get only reindeer with age >= 9: [{name: "Rudolph", age: 9}, {name: "Cupid", age: 9}]</p>',
     },
-    input: [{name: "Alice", age: 25}, {name: "Bob", age: 30}, {name: "Charlie", age: 20}],
-    expected: [{name: "Alice", age: 25}, {name: "Bob", age: 30}],
-    before: 'const result = ',
+    input: [{name: "Rudolph", age: 9}, {name: "Comet", age: 8}, {name: "Cupid", age: 9}],
+    expected: [{name: "Rudolph", age: 9}, {name: "Cupid", age: 9}],
+    before: 'const result: {name: string, age: number}[] = ',
     after: ';',
     codeLines: 3
   },
@@ -149,7 +149,7 @@ var levels = [
     },
     input: [3, 1, 4, 2, 5],
     expected: [1, 2, 3, 4, 5],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -160,7 +160,7 @@ var levels = [
     },
     input: [3, 1, 4, 2, 5],
     expected: [5, 4, 3, 2, 1],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -171,7 +171,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5],
     expected: [5, 4, 3, 2, 1],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -182,7 +182,7 @@ var levels = [
     },
     input: [10, 20, 30, 40, 50],
     expected: [20, 30],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -193,7 +193,7 @@ var levels = [
     },
     input: [10, 20, 30, 40, 50],
     expected: [30, 40, 50],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -204,7 +204,7 @@ var levels = [
     },
     input: [1, 2, 3],
     expected: [1, 2, 3, 4, 5, 6],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -215,7 +215,7 @@ var levels = [
     },
     input: ["a", "b", "c"],
     expected: "a,b,c",
-    before: 'const result = ',
+    before: 'const result: string = ',
     after: ';',
     codeLines: 3
   },
@@ -226,7 +226,7 @@ var levels = [
     },
     input: [10, 20, 30, 40, 30],
     expected: 2,
-    before: 'const result = ',
+    before: 'const result: number = ',
     after: ';',
     codeLines: 3
   },
@@ -237,7 +237,7 @@ var levels = [
     },
     input: [[1, 2], [3, 4], [5]],
     expected: [1, 2, 3, 4, 5],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -248,7 +248,7 @@ var levels = [
     },
     input: ["hello", "world"],
     expected: ["HELLO", "WORLD"],
-    before: 'const result = ',
+    before: 'const result: string[] = ',
     after: ';',
     codeLines: 3
   },
@@ -259,7 +259,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     expected: [4, 5, 6, 7],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -270,7 +270,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5, 6, 7, 8],
     expected: 4,
-    before: 'const result = ',
+    before: 'const result: number = ',
     after: ';',
     codeLines: 3
   },
@@ -281,7 +281,7 @@ var levels = [
     },
     input: [{type: "fruit", name: "apple"}, {type: "vegetable", name: "carrot"}, {type: "fruit", name: "banana"}],
     expected: {fruit: 2, vegetable: 1},
-    before: 'const result = ',
+    before: 'const result: Record<string, number> = ',
     after: ';',
     codeLines: 5
   },
@@ -292,7 +292,7 @@ var levels = [
     },
     input: [{name: "Alice", age: 25}, {name: "Bob", age: 30}, {name: "Charlie", age: 20}],
     expected: {name: "Bob", age: 30},
-    before: 'const result = ',
+    before: 'const result: {name: string, age: number} | undefined = ',
     after: ';',
     codeLines: 3
   },
@@ -303,7 +303,7 @@ var levels = [
     },
     input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     expected: 90,
-    before: 'const result = ',
+    before: 'const result: number = ',
     after: ';',
     codeLines: 3
   },
@@ -314,7 +314,7 @@ var levels = [
     },
     input: [1, 2, 3],
     expected: [1, 2, 2, 4, 3, 6],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -325,51 +325,51 @@ var levels = [
     },
     input: [[1, 2], [3, 4], [5, 6]],
     expected: [1, 3, 5],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
   {
     name: 'real world 1',
     instructions: {
-      'en': '<p>Real-world scenario: Process product data. From products with prices, calculate the total cost of items that cost more than $10.</p><p>From [{name: "apple", price: 5}, {name: "laptop", price: 800}, {name: "book", price: 15}], sum prices of items > $10: 815</p>',
+      'en': '<p>Real-world scenario: Process holiday shopping data. From items with prices, calculate the total cost of items that cost more than $10.</p><p>From [{name: "candy cane", price: 5}, {name: "toy train", price: 50}, {name: "stocking", price: 15}], sum prices of items > $10: 65</p>',
     },
-    input: [{name: "apple", price: 5}, {name: "laptop", price: 800}, {name: "book", price: 15}],
-    expected: 815,
-    before: 'const result = ',
+    input: [{name: "candy cane", price: 5}, {name: "toy train", price: 50}, {name: "stocking", price: 15}],
+    expected: 65,
+    before: 'const result: number = ',
     after: ';',
     codeLines: 3
   },
   {
     name: 'real world 2',
     instructions: {
-      'en': '<p>Real-world scenario: Format user data. Extract and format names from user objects.</p><p>From [{firstName: "John", lastName: "Doe"}, {firstName: "Jane", lastName: "Smith"}], create full names: ["John Doe", "Jane Smith"]</p>',
+      'en': '<p>Real-world scenario: Format user data. Extract and format names from user objects.</p><p>From [{firstName: "Santa", lastName: "Claus"}, {firstName: "Mrs", lastName: "Claus"}], create full names: ["Santa Claus", "Mrs Claus"]</p>',
     },
-    input: [{firstName: "John", lastName: "Doe"}, {firstName: "Jane", lastName: "Smith"}],
-    expected: ["John Doe", "Jane Smith"],
-    before: 'const result = ',
+    input: [{firstName: "Santa", lastName: "Claus"}, {firstName: "Mrs", lastName: "Claus"}],
+    expected: ["Santa Claus", "Mrs Claus"],
+    before: 'const result: string[] = ',
     after: ';',
     codeLines: 3
   },
   {
     name: 'object keys',
     instructions: {
-      'en': '<p>Use <code>Object.keys()</code> to get all property names from an object. This returns an array of the object\'s own enumerable property names.</p><p>Get all keys from {name: "Alice", age: 25, city: "NYC"}: ["name", "age", "city"]</p>',
+      'en': '<p>Use <code>Object.keys()</code> to get all property names from an object. This returns an array of the object\'s own enumerable property names.</p><p>Get all keys from {name: "Santa", age: 1750, home: "North Pole"}: ["name", "age", "home"]</p>',
     },
-    input: {name: "Alice", age: 25, city: "NYC"},
-    expected: ["name", "age", "city"],
-    before: 'const result = ',
+    input: {name: "Santa", age: 1750, home: "North Pole"},
+    expected: ["name", "age", "home"],
+    before: 'const result: string[] = ',
     after: ';',
     codeLines: 3
   },
   {
     name: 'object values',
     instructions: {
-      'en': '<p>Use <code>Object.values()</code> to get all property values from an object. This returns an array of the object\'s own enumerable property values.</p><p>Get all values from {name: "Alice", age: 25, city: "NYC"}: ["Alice", 25, "NYC"]</p>',
+      'en': '<p>Use <code>Object.values()</code> to get all property values from an object. This returns an array of the object\'s own enumerable property values.</p><p>Get all values from {name: "Santa", age: 1750, home: "North Pole"}: ["Santa", 1750, "North Pole"]</p>',
     },
-    input: {name: "Alice", age: 25, city: "NYC"},
-    expected: ["Alice", 25, "NYC"],
-    before: 'const result = ',
+    input: {name: "Santa", age: 1750, home: "North Pole"},
+    expected: ["Santa", 1750, "North Pole"],
+    before: 'const result: (string | number)[] = ',
     after: ';',
     codeLines: 3
   },
@@ -380,7 +380,7 @@ var levels = [
     },
     input: {a: 1, b: 2, c: 3},
     expected: [["a", 1], ["b", 2], ["c", 3]],
-    before: 'const result = ',
+    before: 'const result: [string, number][] = ',
     after: ';',
     codeLines: 3
   },
@@ -391,18 +391,18 @@ var levels = [
     },
     input: [10, 20, 30],
     expected: [10, 20],
-    before: 'const [first, second] = ',
+    before: 'const [first, second]: number[] = ',
     after: ';\nconst result = [first, second];',
     codeLines: 4
   },
   {
     name: 'destructuring objects',
     instructions: {
-      'en': '<p>Use object destructuring to extract properties. The syntax <code>const {name, age} = obj</code> extracts the <code>name</code> and <code>age</code> properties.</p><p>Extract name and age from {name: "Bob", age: 30, city: "LA"} and return them as an array: ["Bob", 30]</p>',
+      'en': '<p>Use object destructuring to extract properties. The syntax <code>const {name, age} = obj</code> extracts the <code>name</code> and <code>age</code> properties.</p><p>Extract name and age from {name: "Frosty", age: 5, city: "Snowland"} and return them as an array: ["Frosty", 5]</p>',
     },
-    input: {name: "Bob", age: 30, city: "LA"},
-    expected: ["Bob", 30],
-    before: 'const {name, age} = ',
+    input: {name: "Frosty", age: 5, city: "Snowland"},
+    expected: ["Frosty", 5],
+    before: 'const {name, age}: {name: string, age: number, city: string} = ',
     after: ';\nconst result = [name, age];',
     codeLines: 4
   },
@@ -413,7 +413,7 @@ var levels = [
     },
     input: [1, 2, 3],
     expected: [1, 2, 3, 4, 5],
-    before: 'const arr2 = [4, 5];\nconst result = ',
+    before: 'const arr2 = [4, 5];\n    const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -424,7 +424,7 @@ var levels = [
     },
     input: {a: 1, b: 2},
     expected: {a: 1, b: 3, c: 4},
-    before: 'const obj = arr;\nconst obj2 = {b: 3, c: 4};\nconst result = ',
+    before: 'const obj = arr;\n    const obj2 = {b: 3, c: 4};\n    const result: {a: number, b: number, c: number} = ',
     after: ';',
     codeLines: 3
   },
@@ -435,7 +435,7 @@ var levels = [
     },
     input: "hello world",
     expected: ["HELLO", "WORLD"],
-    before: 'const str = arr;\nconst result = ',
+    before: 'const str: string = arr;\n    const result: string[] = ',
     after: ';',
     codeLines: 3
   },
@@ -446,7 +446,7 @@ var levels = [
     },
     input: "hello world test",
     expected: "hello-world-test",
-    before: 'const str = arr;\nconst result = ',
+    before: 'const str: string = arr;\n    const result: string = ',
     after: ';',
     codeLines: 3
   },
@@ -457,7 +457,7 @@ var levels = [
     },
     input: [1, 2, 2, 3, 3, 3, 4],
     expected: [1, 2, 3, 4],
-    before: 'const result = ',
+    before: 'const result: number[] = ',
     after: ';',
     codeLines: 3
   },
@@ -468,7 +468,7 @@ var levels = [
     },
     input: [["a", 1], ["b", 2]],
     expected: [["a", 1], ["b", 2]],
-    before: 'const map = new Map(arr);\nconst result = ',
+    before: 'const map = new Map(arr);\n    const result: [string, number][] = ',
     after: ';',
     codeLines: 3
   },
@@ -479,7 +479,7 @@ var levels = [
     },
     input: {user: {address: {city: "NYC"}}},
     expected: "NYC",
-    before: 'const data = arr;\nconst result = ',
+    before: 'const data = arr;\n    const result: string | undefined = ',
     after: ';',
     codeLines: 3
   },
@@ -490,18 +490,18 @@ var levels = [
     },
     input: "hello",
     expected: "hello",
-    before: 'const value = arr;\nconst result = ',
+    before: 'const value: string | null | undefined = arr;\n    const result: string = ',
     after: ';',
     codeLines: 3
   },
   {
     name: 'template literals',
     instructions: {
-      'en': '<p>Use template literals (backticks) to create strings with embedded expressions. Use <code>${expression}</code> to interpolate values.</p><p>Create a greeting: "Hello, Alice! You are 25 years old." from name="Alice" and age=25</p>',
+      'en': '<p>Use template literals (backticks) to create strings with embedded expressions. Use <code>${expression}</code> to interpolate values.</p><p>Create a greeting: "Hello, Rudolph! You are 9 years old." from name="Rudolph" and age=9</p>',
     },
-    input: {name: "Alice", age: 25},
-    expected: "Hello, Alice! You are 25 years old.",
-    before: 'const {name, age} = arr;\nconst result = ',
+    input: {name: "Rudolph", age: 9},
+    expected: "Hello, Rudolph! You are 9 years old.",
+    before: 'const {name, age} = arr;\n    const result: string = ',
     after: ';',
     codeLines: 3
   },
@@ -512,7 +512,7 @@ var levels = [
     },
     input: [["name", "Alice"], ["age", 25]],
     expected: {name: "Alice", age: 25},
-    before: 'const result = ',
+    before: 'const result: {name: string, age: number} = ',
     after: ';',
     codeLines: 3
   },
@@ -523,7 +523,7 @@ var levels = [
     },
     input: {a: 1},
     expected: {a: 1, b: 2},
-    before: 'const obj = arr;\nconst source = {b: 2};\nconst result = ',
+    before: 'const obj = arr;\n    const source = {b: 2};\n    const result: {a: number, b: number} = ',
     after: ';',
     codeLines: 3
   },
@@ -534,7 +534,7 @@ var levels = [
     },
     input: [1, "hello", true, "world", 42],
     expected: ["hello", "world"],
-    before: 'const result = ',
+    before: 'const result: string[] = ',
     after: ';',
     codeLines: 3
   },
@@ -545,7 +545,7 @@ var levels = [
     },
     input: {multiplier: 3, number: 4},
     expected: 12,
-    before: 'const {multiplier, number} = arr;\nconst createMultiplier = (mult) => (n) => n * mult;\nconst multiply = createMultiplier(multiplier);\nconst result = ',
+    before: 'const {multiplier, number} = arr;\n    const createMultiplier = (mult: number) => (n: number) => n * mult;\n    const multiply = createMultiplier(multiplier);\n    const result: number = ',
     after: ';',
     codeLines: 3
   },
@@ -556,7 +556,7 @@ var levels = [
     },
     input: [1, 2, 3, 4],
     expected: [2, 4, 6, 8],
-    before: 'const myMap = (arr, fn) => arr.map(fn);\nconst result = myMap(',
+    before: 'const myMap = (arr: number[], fn: (x: number) => number) => arr.map(fn);\n    const result: number[] = myMap(',
     after: ', x => x * 2);',
     codeLines: 3
   },
@@ -567,7 +567,7 @@ var levels = [
     },
     input: 5,
     expected: 120,
-    before: 'const n = arr;\nconst factorial = (n) => n <= 1 ? 1 : n * factorial(n - 1);\nconst result = factorial(',
+    before: 'const n = arr;\n    const factorial = (n: number): number => n <= 1 ? 1 : n * factorial(n - 1);\n    const result: number = factorial(',
     after: ');',
     codeLines: 3
   },
@@ -578,7 +578,7 @@ var levels = [
     },
     input: "2024-03-15",
     expected: 2024,
-    before: 'const dateStr = arr;\nconst date = new Date(dateStr);\nconst result = date.',
+    before: 'const dateStr = arr;\n    const date = new Date(dateStr);\n    const result: number = date.',
     after: '();',
     codeLines: 3
   },
@@ -589,7 +589,7 @@ var levels = [
     },
     input: "abc123def456",
     expected: ["123", "456"],
-    before: 'const str = arr;\nconst result = ',
+    before: 'const str: string = arr;\n    const result: string[] | null = ',
     after: ';',
     codeLines: 3
   },
@@ -600,7 +600,7 @@ var levels = [
     },
     input: [{user: {name: "Alice", scores: [10, 20]}}, {user: {name: "Bob", scores: [15, 25]}}],
     expected: ["Alice", "Bob"],
-    before: 'const result = ',
+    before: 'const result: string[] = ',
     after: ';',
     codeLines: 3
   },
@@ -611,7 +611,7 @@ var levels = [
     },
     input: "dynamicKey",
     expected: {dynamicKey: "value"},
-    before: 'const key = arr;\nconst result = ',
+    before: 'const key = arr;\n    const result: {[key: string]: string} = ',
     after: ';',
     codeLines: 3
   },
@@ -622,7 +622,7 @@ var levels = [
     },
     input: {a: 1, b: 2, c: 3},
     expected: {a: 2, b: 4, c: 6},
-    before: 'const obj = arr;\nconst result = ',
+    before: 'const obj = arr;\n    const result: {a: number, b: number, c: number} = ',
     after: ';',
     codeLines: 3
   },
@@ -633,18 +633,18 @@ var levels = [
     },
     input: "hello world",
     expected: "Hello World",
-    before: 'const str = arr;\nconst result = ',
+    before: 'const str: string = arr;\n    const result: string = ',
     after: ';',
     codeLines: 3
   },
   {
     name: 'filter and transform objects',
     instructions: {
-      'en': '<p>Filter an array of objects and transform the results. Combine <code>filter()</code> and <code>map()</code> to process complex data.</p><p>From [{name: "Alice", age: 25}, {name: "Bob", age: 17}, {name: "Charlie", age: 30}], get names of people 18 or older: ["Alice", "Charlie"]</p>',
+      'en': '<p>Filter an array of objects and transform the results. Combine <code>filter()</code> and <code>map()</code> to process complex data.</p><p>From [{name: "Prancer", age: 150}, {name: "Vixen", age: 140}, {name: "Baby Reindeer", age: 1}], get names of reindeer 100 or older: ["Prancer", "Vixen"]</p>',
     },
-    input: [{name: "Alice", age: 25}, {name: "Bob", age: 17}, {name: "Charlie", age: 30}],
-    expected: ["Alice", "Charlie"],
-    before: 'const result = ',
+    input: [{name: "Prancer", age: 150}, {name: "Vixen", age: 140}, {name: "Baby Reindeer", age: 1}],
+    expected: ["Prancer", "Vixen"],
+    before: 'const result: string[] = ',
     after: ';',
     codeLines: 3
   },
@@ -655,9 +655,141 @@ var levels = [
     },
     input: [["a", 1], ["b", 2], ["c", 3]],
     expected: {a: 1, b: 2, c: 3},
-    before: 'const result = ',
+    before: 'const result: Record<string, number> = ',
     after: ';',
     codeLines: 3
+  },
+  {
+    name: 'frequency map',
+    instructions: {
+      'en': '<p>Use <code>reduce</code> to create a frequency map (count occurrences of each item). Start with an empty object <code>{}</code>.</p><p>Count occurrences of letters in ["a", "b", "a", "c", "b", "a"]: {a: 3, b: 2, c: 1}</p>',
+    },
+    input: ["a", "b", "a", "c", "b", "a"],
+    expected: {a: 3, b: 2, c: 1},
+    before: 'const result: Record<string, number> = ',
+    after: ';',
+    codeLines: 5
+  },
+  {
+    name: 'group by',
+    instructions: {
+      'en': '<p>Use <code>reduce</code> to group objects by a property. Initialize with an empty object.</p><p>Group by "type": {A: [{id: 1, type: "A"}, {id: 3, type: "A"}], B: [{id: 2, type: "B"}]}</p>',
+    },
+    input: [{id: 1, type: 'A'}, {id: 2, type: 'B'}, {id: 3, type: 'A'}],
+    expected: {A: [{id: 1, type: 'A'}, {id: 3, type: 'A'}], B: [{id: 2, type: 'B'}]},
+    before: 'const result: Record<string, {id: number, type: string}[]> = ',
+    after: ';',
+    codeLines: 6
+  },
+  {
+    name: 'intersection',
+    instructions: {
+      'en': '<p>Find the intersection of two arrays (elements present in both). Use <code>filter</code> and <code>includes</code>.</p><p>Find common numbers between [1, 2, 3, 4, 5] and [3, 4, 5, 6, 7]: [3, 4, 5]</p>',
+    },
+    input: [1, 2, 3, 4, 5],
+    expected: [3, 4, 5],
+    before: 'const arr2 = [3, 4, 5, 6, 7];\n    const result: number[] = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'difference',
+    instructions: {
+      'en': '<p>Find the difference between two arrays (elements in the first but NOT in the second). Use <code>filter</code> and <code>!includes</code>.</p><p>Find numbers in [1, 2, 3, 4, 5] that are not in [3, 4, 5, 6, 7]: [1, 2]</p>',
+    },
+    input: [1, 2, 3, 4, 5],
+    expected: [1, 2],
+    before: 'const arr2 = [3, 4, 5, 6, 7];\n    const result: number[] = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'unique objects',
+    instructions: {
+      'en': '<p>Remove duplicate objects based on a property (e.g., "id"). You can use a <code>Map</code> or <code>reduce</code>/<code>filter</code> with an auxiliary Set.</p><p>Get unique objects by ID: [{id: 1, val: "a"}, {id: 2, val: "b"}]</p>',
+    },
+    input: [{id: 1, val: 'a'}, {id: 2, val: 'b'}, {id: 1, val: 'c'}],
+    expected: [{id: 1, val: 'a'}, {id: 2, val: 'b'}],
+    before: 'const result: {id: number, val: string}[] = ',
+    after: ';',
+    codeLines: 5
+  },
+  {
+    name: 'zip',
+    instructions: {
+      'en': '<p>Combine two arrays into an array of pairs (tuples). Use <code>map</code> on one array and access the other by index.</p><p>Zip ["a", "b", "c"] with [1, 2, 3]: [["a", 1], ["b", 2], ["c", 3]]</p>',
+    },
+    input: ["a", "b", "c"],
+    expected: [["a", 1], ["b", 2], ["c", 3]],
+    before: 'const arr2 = [1, 2, 3];\n    const result: [string, number][] = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'partition',
+    instructions: {
+      'en': '<p>Split an array into two groups based on a condition. Return an array containing two arrays: [pass, fail].</p><p>Partition [1, 2, 3, 4, 5, 6] into [odds, evens]: [[1, 3, 5], [2, 4, 6]]</p>',
+    },
+    input: [1, 2, 3, 4, 5, 6],
+    expected: [[1, 3, 5], [2, 4, 6]],
+    before: 'const result: number[][] = ',
+    after: ';',
+    codeLines: 5
+  },
+  {
+    name: 'flatten deep',
+    instructions: {
+      'en': '<p>Flatten a deeply nested array. Use <code>flat(Infinity)</code> or recursion.</p><p>Flatten [1, [2, [3, [4]]]]: [1, 2, 3, 4]</p>',
+    },
+    input: [1, [2, [3, [4]]]],
+    expected: [1, 2, 3, 4],
+    before: 'const result: number[] = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'most frequent',
+    instructions: {
+      'en': '<p>Find the most frequent element in an array. Create a frequency map first, then find the key with the highest count.</p><p>Find the most frequent number in [1, 2, 3, 2, 2, 1, 4]: 2</p>',
+    },
+    input: [1, 2, 3, 2, 2, 1, 4],
+    expected: 2,
+    before: 'const result: number = ',
+    after: ';',
+    codeLines: 6
+  },
+  {
+    name: 'valid anagram',
+    instructions: {
+      'en': '<p>Check if two strings are anagrams (contain same characters in same quantities). Sort both strings and compare.</p><p>Is "listen" an anagram of "silent"? true</p>',
+    },
+    input: "listen",
+    expected: true,
+    before: 'const str2 = "silent";\n    const result: boolean = ',
+    after: ';',
+    codeLines: 4
+  },
+  {
+    name: 'chunk',
+    instructions: {
+      'en': '<p>Split an array into chunks of a specific size. Use <code>reduce</code> or a loop with <code>slice</code>.</p><p>Chunk [1, 2, 3, 4, 5] into size 2: [[1, 2], [3, 4], [5]]</p>',
+    },
+    input: [1, 2, 3, 4, 5],
+    expected: [[1, 2], [3, 4], [5]],
+    before: 'const size = 2;\n    const result: number[][] = ',
+    after: ';',
+    codeLines: 6
+  },
+  {
+    name: 'merge sorted',
+    instructions: {
+      'en': '<p>Merge two sorted arrays into a single sorted array. You can use <code>concat</code> and <code>sort</code>, or a more efficient linear merge.</p><p>Merge [1, 3, 5] and [2, 4, 6]: [1, 2, 3, 4, 5, 6]</p>',
+    },
+    input: [1, 3, 5],
+    expected: [1, 2, 3, 4, 5, 6],
+    before: 'const arr2 = [2, 4, 6];\n    const result: number[] = ',
+    after: ';',
+    codeLines: 5
   }
 ];
 

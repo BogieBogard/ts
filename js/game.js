@@ -417,6 +417,8 @@ var game = {
     }
   },
 
+
+
   createSuccessSparkles: function() {
     var sparkleCount = 15;
     var $pond = $('#pond');
@@ -519,14 +521,19 @@ var game = {
                      beforeCode + code + afterCode;
       
       // Execute in a function scope to capture result
-      // Replace 'const result =' with assignment to window.__gameResult so we can access it
-      window.__gameResult = undefined;
-      var codeToExecute = fullCode.replace(/const result =/g, 'window.__gameResult =');
+      // We append an assignment to capture the result variable
+      fullCode += '\nwindow.__gameResult = result;';
       
       try {
+        // Transpile TypeScript to JavaScript
+        var transpiled = Babel.transform(fullCode, {
+          presets: ['typescript'],
+          filename: 'solution.ts'
+        }).code;
+
         (function() {
           // Execute the modified code
-          eval(codeToExecute);
+          eval(transpiled);
           if (window.__gameResult === undefined) {
             throw new Error('Code did not set a result. Make sure your code assigns to result.');
           }
@@ -538,7 +545,6 @@ var game = {
         // Log the actual error and code for debugging
         console.error('Execution error:', evalError);
         console.error('Full code:', fullCode);
-        console.error('Executed code:', codeToExecute);
         // Re-throw with the actual error message
         throw evalError;
       }
