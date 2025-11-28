@@ -293,10 +293,145 @@ var game = {
     displayHtml += '</div>';
     $('#pond').html(displayHtml);
     $('#background').html(''); // Clear background
+    
+    // Remove level classes and add appropriate one
+    $('#background').removeClass('level-early level-mid level-advanced level-expert');
+    var levelClass = 'level-early';
+    if (this.level >= levels.length * 0.75) {
+      levelClass = 'level-expert';
+    } else if (this.level >= levels.length * 0.5) {
+      levelClass = 'level-advanced';
+    } else if (this.level >= levels.length * 0.25) {
+      levelClass = 'level-mid';
+    }
+    $('#background').addClass(levelClass);
+    
+    // Add floating particles for visual effect
+    game.createPondParticles();
+    game.createPondBubbles();
+    game.createFlowLines();
 
     game.changed = false;
     game.executeCode();
     game.check();
+  },
+
+  createPondParticles: function() {
+    // Remove existing particles
+    $('.pond-particle').remove();
+    
+    // Different types of code-like symbols
+    var bracketSymbols = ['[', ']', '{', '}', '()'];
+    var arrowSymbols = ['=>', '->', '→'];
+    var dotSymbols = ['...', '·', '•'];
+    var numberSymbols = ['1', '2', '3', '0', '[]', '{}'];
+    
+    var particleCount = 12;
+    
+    for (var i = 0; i < particleCount; i++) {
+      var type = Math.random();
+      var symbol, className;
+      
+      if (type < 0.3) {
+        symbol = bracketSymbols[Math.floor(Math.random() * bracketSymbols.length)];
+        className = 'bracket';
+      } else if (type < 0.5) {
+        symbol = arrowSymbols[Math.floor(Math.random() * arrowSymbols.length)];
+        className = 'arrow';
+      } else if (type < 0.7) {
+        symbol = dotSymbols[Math.floor(Math.random() * dotSymbols.length)];
+        className = 'dot';
+      } else {
+        symbol = numberSymbols[Math.floor(Math.random() * numberSymbols.length)];
+        className = 'number';
+      }
+      
+      var particle = $('<div class="pond-particle ' + className + '">' + symbol + '</div>');
+      
+      // Random starting position
+      var startX = Math.random() * 100;
+      var delay = Math.random() * 8;
+      var duration = 10 + Math.random() * 10; // 10-20 seconds
+      var drift = (Math.random() - 0.5) * 40; // Random horizontal drift
+      
+      particle.css({
+        left: startX + '%',
+        animationDelay: delay + 's',
+        animationDuration: duration + 's',
+        '--drift': drift + 'px'
+      });
+      
+      $('#background').append(particle);
+    }
+  },
+
+  createPondBubbles: function() {
+    $('.pond-bubble').remove();
+    
+    var bubbleCount = 6;
+    for (var i = 0; i < bubbleCount; i++) {
+      var bubble = $('<div class="pond-bubble"></div>');
+      var startX = Math.random() * 100;
+      var delay = Math.random() * 8;
+      var size = 6 + Math.random() * 6; // 6-12px
+      
+      bubble.css({
+        left: startX + '%',
+        bottom: Math.random() * 30 + '%',
+        width: size + 'px',
+        height: size + 'px',
+        animationDelay: delay + 's'
+      });
+      
+      $('#background').append(bubble);
+    }
+  },
+
+  createFlowLines: function() {
+    $('.pond-connection').remove();
+    
+    var lineCount = 3;
+    for (var i = 0; i < lineCount; i++) {
+      var line = $('<div class="pond-connection"></div>');
+      var top = Math.random() * 100;
+      var width = 30 + Math.random() * 50; // 30-80px
+      var delay = Math.random() * 4;
+      
+      line.css({
+        top: top + '%',
+        width: width + 'px',
+        animationDelay: delay + 's'
+      });
+      
+      $('#background').append(line);
+    }
+  },
+
+  createSuccessSparkles: function() {
+    var sparkleCount = 15;
+    var $pond = $('#pond');
+    
+    for (var i = 0; i < sparkleCount; i++) {
+      var sparkle = $('<div class="pond-sparkle"></div>');
+      var angle = (Math.PI * 2 * i) / sparkleCount;
+      var distance = 50 + Math.random() * 30;
+      var x = Math.cos(angle) * distance;
+      var y = Math.sin(angle) * distance;
+      
+      sparkle.css({
+        '--sparkle-x': x + 'px',
+        '--sparkle-y': y + 'px',
+        left: '50%',
+        top: '50%'
+      });
+      
+      $pond.append(sparkle);
+      
+      // Remove after animation
+      setTimeout(function() {
+        sparkle.remove();
+      }, 1500);
+    }
   },
 
   loadDocs: function() {
@@ -449,14 +584,32 @@ var game = {
     if (correct) {
       if ($.inArray(level.name, game.solved) === -1) {
         game.solved.push(level.name);
+        // Trigger success effects only when first solving
+        game.triggerSuccessEffects();
       }
 
       $('[data-level=' + game.level + ']').addClass('solved');
       $('#next').removeClass('disabled').addClass('animated animation');
+      $('#pond').addClass('success-glow');
     } else {
       game.changed = true;
       $('#next').removeClass('animated animation').addClass('disabled');
+      $('#pond').removeClass('success-glow');
     }
+  },
+
+  triggerSuccessEffects: function() {
+    // Create sparkle effect
+    game.createSuccessSparkles();
+    
+    // Enhanced particle burst
+    setTimeout(function() {
+      for (var i = 0; i < 5; i++) {
+        setTimeout(function() {
+          game.createPondParticles();
+        }, i * 200);
+      }
+    }, 100);
   },
 
   updateDisplay: function(result) {
