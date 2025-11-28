@@ -440,7 +440,7 @@ var messages = {
     'yo': 'Ṣé o dájú pé o fẹ́ tún ìṣeré náà ṣe?\n\nGbogbo ìtẹ̀sí ìṣeré rẹ̀ tí a fipamọ́ yóò sọnù, a ó sì rán ọ lọ sí ìbẹ̀rẹ̀ ìṣeré.',
   },
   gridGarden: {
-    'en': 'Want to learn more TypeScript? Practice',
+    'en': 'Want to learn more from official documentation sources? Check out the docs of',
     'af': 'Wil jy CSS grid leer? Speel',
     'gj': 'શું તમે CSS Grid શીખવા ઈચ્છો છો ? ચાલો રમવા..!',
     'he': 'רוצה ללמוד CSS grid? שחק',
