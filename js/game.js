@@ -84,6 +84,14 @@ var game = {
     .on('input', function() {
       game.changed = true;
       $('#next').removeClass('animated animation').addClass('disabled');
+      game.highlightSyntax();
+    })
+    .on('scroll', function() {
+      var scrollTop = $(this).scrollTop();
+      var scrollLeft = $(this).scrollLeft();
+      $('#code-highlight').css({
+        'transform': 'translate(' + (-scrollLeft) + 'px, ' + (-scrollTop) + 'px)'
+      });
     });
 
     $('#editor').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
@@ -273,11 +281,13 @@ var game = {
 
     var answer = game.answers[level.name];
     $('#code').val(answer).focus();
+    game.highlightSyntax();
 
     this.loadDocs();
 
     var lines = level.codeLines || 5;
     $('#code').height(20 * lines).data("lines", lines);
+    game.highlightSyntax();
 
     // Display input array and expected output
     var displayHtml = '<div class="code-result">';
@@ -711,6 +721,208 @@ var game = {
 
     $('#code').val(code);
     $('#code').focus();
+    game.highlightSyntax();
+  },
+
+  highlightSyntax: function() {
+    var code = $('#code').val();
+    var highlighted = game.parseCode(code);
+    var $code = $('#code');
+    var $highlight = $('#code-highlight');
+    
+    $highlight.html(highlighted);
+    
+    // Match textarea scroll height
+    var scrollHeight = $code[0].scrollHeight;
+    $highlight.css('height', scrollHeight + 'px');
+    
+    // Sync scroll position using transform
+    var scrollTop = $code.scrollTop();
+    var scrollLeft = $code.scrollLeft();
+    $highlight.css({
+      'transform': 'translate(' + (-scrollLeft) + 'px, ' + (-scrollTop) + 'px)'
+    });
+  },
+
+  parseCode: function(code) {
+    if (!code) return '';
+    
+    // Escape HTML
+    var escapeHtml = function(text) {
+      var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    };
+    
+    // Keywords
+    var keywords = ['const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'do', 'switch', 'case', 'break', 'continue', 'default', 'try', 'catch', 'finally', 'throw', 'new', 'this', 'typeof', 'instanceof', 'void', 'delete', 'in', 'of', 'async', 'await', 'class', 'extends', 'super', 'static', 'import', 'export', 'from', 'as', 'type', 'interface', 'enum'];
+    
+    // Common array methods and functions
+    var functions = ['map', 'filter', 'reduce', 'forEach', 'find', 'findIndex', 'some', 'every', 'includes', 'indexOf', 'slice', 'splice', 'concat', 'join', 'push', 'pop', 'shift', 'unshift', 'sort', 'reverse', 'toString', 'parseInt', 'parseFloat', 'isNaN', 'isFinite', 'Array', 'Object', 'String', 'Number', 'Boolean', 'Date', 'Math', 'JSON', 'console', 'log', 'error', 'warn', 'info'];
+    
+    var result = '';
+    var i = 0;
+    var inString = false;
+    var stringChar = '';
+    var inComment = false;
+    var commentType = '';
+    
+    while (i < code.length) {
+      var char = code[i];
+      var nextChar = i + 1 < code.length ? code[i + 1] : '';
+      
+      // Handle comments
+      if (!inString && !inComment) {
+        if (char === '/' && nextChar === '/') {
+          inComment = true;
+          commentType = 'line';
+          result += '<span class="comment">//';
+          i += 2;
+          continue;
+        } else if (char === '/' && nextChar === '*') {
+          inComment = true;
+          commentType = 'block';
+          result += '<span class="comment">/*';
+          i += 2;
+          continue;
+        }
+      }
+      
+      if (inComment) {
+        if (commentType === 'line' && char === '\n') {
+          inComment = false;
+          result += '</span>';
+        } else if (commentType === 'block' && char === '*' && nextChar === '/') {
+          inComment = false;
+          result += '*/</span>';
+          i += 2;
+          continue;
+        } else {
+          result += escapeHtml(char);
+          i++;
+          continue;
+        }
+      }
+      
+      // Handle strings
+      if (!inComment && (char === '"' || char === "'" || char === '`')) {
+        if (!inString) {
+          inString = true;
+          stringChar = char;
+          result += '<span class="string">' + escapeHtml(char);
+        } else if (char === stringChar && code[i - 1] !== '\\') {
+          inString = false;
+          result += escapeHtml(char) + '</span>';
+        } else {
+          result += escapeHtml(char);
+        }
+        i++;
+        continue;
+      }
+      
+      if (inString) {
+        result += escapeHtml(char);
+        i++;
+        continue;
+      }
+      
+      // Handle numbers
+      if (/[0-9]/.test(char) && (i === 0 || !/[a-zA-Z_$]/.test(code[i - 1]))) {
+        var num = '';
+        while (i < code.length && /[0-9.]/.test(code[i])) {
+          num += code[i];
+          i++;
+        }
+        result += '<span class="number">' + escapeHtml(num) + '</span>';
+        continue;
+      }
+      
+      // Handle operators and punctuation
+      if (/[=+\-*/%&|<>!?:]/.test(char)) {
+        var op = char;
+        if (char === '=' && nextChar === '>') {
+          op = '=>';
+          i++;
+        } else if (char === '=' && nextChar === '=') {
+          op = '==';
+          i++;
+        } else if (char === '!' && nextChar === '=') {
+          op = '!=';
+          i++;
+        } else if (char === '&' && nextChar === '&') {
+          op = '&&';
+          i++;
+        } else if (char === '|' && nextChar === '|') {
+          op = '||';
+          i++;
+        }
+        result += '<span class="operator">' + escapeHtml(op) + '</span>';
+        i++;
+        continue;
+      }
+      
+      if (/[()[\]{};,]/.test(char)) {
+        result += '<span class="punctuation">' + escapeHtml(char) + '</span>';
+        i++;
+        continue;
+      }
+      
+      // Handle identifiers, keywords, and functions
+      if (/[a-zA-Z_$]/.test(char)) {
+        var word = '';
+        var start = i;
+        while (i < code.length && /[a-zA-Z0-9_$]/.test(code[i])) {
+          word += code[i];
+          i++;
+        }
+        
+        // Check if it's a keyword
+        if (keywords.indexOf(word) !== -1) {
+          result += '<span class="keyword">' + escapeHtml(word) + '</span>';
+        }
+        // Check if it's a function name
+        else if (functions.indexOf(word) !== -1) {
+          result += '<span class="function">' + escapeHtml(word) + '</span>';
+        }
+        // Check if it's a property access (word after a dot)
+        else if (start > 0 && code[start - 1] === '.') {
+          result += '<span class="property">' + escapeHtml(word) + '</span>';
+        }
+        // Check if it's a parameter (word after opening paren in arrow function context)
+        else if (start > 0 && code[start - 1] === '(' && code.substring(Math.max(0, start - 10), start).indexOf('=>') !== -1) {
+          result += '<span class="parameter">' + escapeHtml(word) + '</span>';
+        }
+        // Default to variable
+        else {
+          result += '<span class="variable">' + escapeHtml(word) + '</span>';
+        }
+        continue;
+      }
+      
+      // Handle whitespace and other characters
+      if (char === '\n') {
+        result += '\n';
+      } else if (char === ' ') {
+        result += ' ';
+      } else {
+        result += escapeHtml(char);
+      }
+      i++;
+    }
+    
+    if (inString) {
+      result += '</span>';
+    }
+    if (inComment) {
+      result += '</span>';
+    }
+    
+    return result;
   }
 };
 
