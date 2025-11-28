@@ -350,6 +350,314 @@ var levels = [
     before: 'const result = ',
     after: ';',
     codeLines: 3
+  },
+  {
+    name: 'object keys',
+    instructions: {
+      'en': '<p>Use <code>Object.keys()</code> to get all property names from an object. This returns an array of the object\'s own enumerable property names.</p><p>Get all keys from {name: "Alice", age: 25, city: "NYC"}: ["name", "age", "city"]</p>',
+    },
+    input: {name: "Alice", age: 25, city: "NYC"},
+    expected: ["name", "age", "city"],
+    before: 'const result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'object values',
+    instructions: {
+      'en': '<p>Use <code>Object.values()</code> to get all property values from an object. This returns an array of the object\'s own enumerable property values.</p><p>Get all values from {name: "Alice", age: 25, city: "NYC"}: ["Alice", 25, "NYC"]</p>',
+    },
+    input: {name: "Alice", age: 25, city: "NYC"},
+    expected: ["Alice", 25, "NYC"],
+    before: 'const result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'object entries',
+    instructions: {
+      'en': '<p>Use <code>Object.entries()</code> to get key-value pairs from an object. This returns an array of [key, value] pairs.</p><p>Get entries from {a: 1, b: 2, c: 3}: [["a", 1], ["b", 2], ["c", 3]]</p>',
+    },
+    input: {a: 1, b: 2, c: 3},
+    expected: [["a", 1], ["b", 2], ["c", 3]],
+    before: 'const result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'destructuring arrays',
+    instructions: {
+      'en': '<p>Use array destructuring to extract values. The syntax <code>const [first, second] = arr</code> assigns the first element to <code>first</code> and second to <code>second</code>.</p><p>Extract the first two elements from [10, 20, 30] and return them as an array: [10, 20]</p>',
+    },
+    input: [10, 20, 30],
+    expected: [10, 20],
+    before: 'const [first, second] = ',
+    after: ';\nconst result = [first, second];',
+    codeLines: 4
+  },
+  {
+    name: 'destructuring objects',
+    instructions: {
+      'en': '<p>Use object destructuring to extract properties. The syntax <code>const {name, age} = obj</code> extracts the <code>name</code> and <code>age</code> properties.</p><p>Extract name and age from {name: "Bob", age: 30, city: "LA"} and return them as an array: ["Bob", 30]</p>',
+    },
+    input: {name: "Bob", age: 30, city: "LA"},
+    expected: ["Bob", 30],
+    before: 'const {name, age} = ',
+    after: ';\nconst result = [name, age];',
+    codeLines: 4
+  },
+  {
+    name: 'spread operator',
+    instructions: {
+      'en': '<p>Use the spread operator <code>...</code> to expand arrays or objects. <code>[...arr1, ...arr2]</code> combines arrays, and <code>{...obj1, ...obj2}</code> merges objects.</p><p>Combine [1, 2, 3] and [4, 5] using spread: [1, 2, 3, 4, 5]</p>',
+    },
+    input: [1, 2, 3],
+    expected: [1, 2, 3, 4, 5],
+    before: 'const arr2 = [4, 5];\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'spread objects',
+    instructions: {
+      'en': '<p>Use spread operator to merge objects. Later properties override earlier ones. <code>{...obj1, ...obj2}</code> creates a new object with properties from both.</p><p>Merge {a: 1, b: 2} and {b: 3, c: 4}: {a: 1, b: 3, c: 4}</p>',
+    },
+    input: {a: 1, b: 2},
+    expected: {a: 1, b: 3, c: 4},
+    before: 'const obj = arr;\nconst obj2 = {b: 3, c: 4};\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'string methods',
+    instructions: {
+      'en': '<p>Use string methods like <code>split()</code>, <code>replace()</code>, <code>toUpperCase()</code>, <code>toLowerCase()</code>, <code>trim()</code>, etc.</p><p>Convert "hello world" to uppercase and split by space: ["HELLO", "WORLD"]</p>',
+    },
+    input: "hello world",
+    expected: ["HELLO", "WORLD"],
+    before: 'const str = arr;\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'string replace',
+    instructions: {
+      'en': '<p>Use <code>replace()</code> or <code>replaceAll()</code> to replace text in strings. <code>replace()</code> replaces the first match, <code>replaceAll()</code> replaces all matches.</p><p>Replace all spaces with dashes in "hello world test": "hello-world-test"</p>',
+    },
+    input: "hello world test",
+    expected: "hello-world-test",
+    before: 'const str = arr;\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'sets',
+    instructions: {
+      'en': '<p>Use <code>Set</code> to store unique values. Convert an array to a Set to remove duplicates, then convert back to an array using <code>Array.from()</code> or spread operator.</p><p>Remove duplicates from [1, 2, 2, 3, 3, 3, 4]: [1, 2, 3, 4]</p>',
+    },
+    input: [1, 2, 2, 3, 3, 3, 4],
+    expected: [1, 2, 3, 4],
+    before: 'const result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'maps',
+    instructions: {
+      'en': '<p>Use <code>Map</code> to store key-value pairs. Create with <code>new Map()</code>, set values with <code>map.set(key, value)</code>, and convert to array with <code>Array.from(map)</code> or <code>[...map]</code>.</p><p>Create a Map from [["a", 1], ["b", 2]] and get all entries as an array: [["a", 1], ["b", 2]]</p>',
+    },
+    input: [["a", 1], ["b", 2]],
+    expected: [["a", 1], ["b", 2]],
+    before: 'const map = new Map(arr);\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'optional chaining',
+    instructions: {
+      'en': '<p>Use optional chaining <code>?.</code> to safely access nested properties. If any part is null/undefined, it returns undefined instead of throwing an error.</p><p>Access <code>user.address.city</code> where user might be null. Return the city or "unknown": "NYC"</p>',
+    },
+    input: {user: {address: {city: "NYC"}}},
+    expected: "NYC",
+    before: 'const data = arr;\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'nullish coalescing',
+    instructions: {
+      'en': '<p>Use nullish coalescing operator <code>??</code> to provide default values. It returns the right side only if the left side is <code>null</code> or <code>undefined</code> (not other falsy values).</p><p>Use <code>??</code> to return the value or "default" if null/undefined: "hello"</p>',
+    },
+    input: "hello",
+    expected: "hello",
+    before: 'const value = arr;\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'template literals',
+    instructions: {
+      'en': '<p>Use template literals (backticks) to create strings with embedded expressions. Use <code>${expression}</code> to interpolate values.</p><p>Create a greeting: "Hello, Alice! You are 25 years old." from name="Alice" and age=25</p>',
+    },
+    input: {name: "Alice", age: 25},
+    expected: "Hello, Alice! You are 25 years old.",
+    before: 'const {name, age} = arr;\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'object from entries',
+    instructions: {
+      'en': '<p>Use <code>Object.fromEntries()</code> to convert an array of [key, value] pairs into an object. This is the inverse of <code>Object.entries()</code>.</p><p>Convert [["name", "Alice"], ["age", 25]] to {name: "Alice", age: 25}</p>',
+    },
+    input: [["name", "Alice"], ["age", 25]],
+    expected: {name: "Alice", age: 25},
+    before: 'const result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'object assign',
+    instructions: {
+      'en': '<p>Use <code>Object.assign()</code> to copy properties from one or more source objects to a target object. <code>Object.assign(target, ...sources)</code> returns the target object. Use an empty object <code>{}</code> as the first argument to create a new object.</p><p>Merge {a: 1} and {b: 2} into a new object: {a: 1, b: 2}</p>',
+    },
+    input: {a: 1},
+    expected: {a: 1, b: 2},
+    before: 'const obj = arr;\nconst source = {b: 2};\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'type checking',
+    instructions: {
+      'en': '<p>Use <code>typeof</code> to check the type of a value, or <code>Array.isArray()</code> for arrays, or <code>instanceof</code> for objects. Filter an array to get only strings.</p><p>From [1, "hello", true, "world", 42], get only strings: ["hello", "world"]</p>',
+    },
+    input: [1, "hello", true, "world", 42],
+    expected: ["hello", "world"],
+    before: 'const result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'closures',
+    instructions: {
+      'en': '<p>Create a closure: a function that returns another function. The inner function has access to variables in the outer function\'s scope even after the outer function returns.</p><p>Create a function that takes a multiplier and returns a function that multiplies a number by that multiplier. Then call it with multiplier=3 and number=4: 12</p>',
+    },
+    input: {multiplier: 3, number: 4},
+    expected: 12,
+    before: 'const {multiplier, number} = arr;\nconst createMultiplier = (mult) => (n) => n * mult;\nconst multiply = createMultiplier(multiplier);\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'higher order functions',
+    instructions: {
+      'en': '<p>Create a higher-order function that takes a function and applies it to each element. This is like creating your own <code>map</code> function.</p><p>Create a function that doubles each number in [1, 2, 3, 4]: [2, 4, 6, 8]</p>',
+    },
+    input: [1, 2, 3, 4],
+    expected: [2, 4, 6, 8],
+    before: 'const myMap = (arr, fn) => arr.map(fn);\nconst result = myMap(',
+    after: ', x => x * 2);',
+    codeLines: 3
+  },
+  {
+    name: 'recursion basics',
+    instructions: {
+      'en': '<p>Use recursion to solve problems. A recursive function calls itself with a smaller input until it reaches a base case. Calculate the factorial of a number: n! = n * (n-1) * ... * 1</p><p>Calculate factorial of 5: 120</p>',
+    },
+    input: 5,
+    expected: 120,
+    before: 'const n = arr;\nconst factorial = (n) => n <= 1 ? 1 : n * factorial(n - 1);\nconst result = factorial(',
+    after: ');',
+    codeLines: 3
+  },
+  {
+    name: 'date manipulation',
+    instructions: {
+      'en': '<p>Work with <code>Date</code> objects. Use methods like <code>getFullYear()</code>, <code>getMonth()</code>, <code>getDate()</code>, <code>getTime()</code>, etc. Months are 0-indexed (0 = January).</p><p>Get the year from a date string "2024-03-15": 2024</p>',
+    },
+    input: "2024-03-15",
+    expected: 2024,
+    before: 'const dateStr = arr;\nconst date = new Date(dateStr);\nconst result = date.',
+    after: '();',
+    codeLines: 3
+  },
+  {
+    name: 'regex basics',
+    instructions: {
+      'en': '<p>Use regular expressions with <code>match()</code>, <code>test()</code>, or <code>replace()</code>. Create regex with <code>/pattern/</code> or <code>new RegExp()</code>.</p><p>Extract all digits from "abc123def456": ["123", "456"]</p>',
+    },
+    input: "abc123def456",
+    expected: ["123", "456"],
+    before: 'const str = arr;\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'nested object access',
+    instructions: {
+      'en': '<p>Access nested object properties and transform them. Combine object methods with array methods to process complex data structures.</p><p>From [{user: {name: "Alice", scores: [10, 20]}}, {user: {name: "Bob", scores: [15, 25]}}], get all names: ["Alice", "Bob"]</p>',
+    },
+    input: [{user: {name: "Alice", scores: [10, 20]}}, {user: {name: "Bob", scores: [15, 25]}}],
+    expected: ["Alice", "Bob"],
+    before: 'const result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'computed properties',
+    instructions: {
+      'en': '<p>Use computed property names in objects with square brackets <code>[key]</code>. This allows you to use variables or expressions as property names.</p><p>Create an object with a dynamic key: {dynamicKey: "value"}</p>',
+    },
+    input: "dynamicKey",
+    expected: {dynamicKey: "value"},
+    before: 'const key = arr;\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'array methods with objects',
+    instructions: {
+      'en': '<p>Combine array methods with Object methods. Use <code>Object.entries()</code> to convert an object to an array, process it, then convert back with <code>Object.fromEntries()</code>.</p><p>Double all values in {a: 1, b: 2, c: 3}: {a: 2, b: 4, c: 6}</p>',
+    },
+    input: {a: 1, b: 2, c: 3},
+    expected: {a: 2, b: 4, c: 6},
+    before: 'const obj = arr;\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'string manipulation advanced',
+    instructions: {
+      'en': '<p>Combine multiple string methods. Use <code>split()</code>, <code>map()</code>, <code>join()</code>, and other string methods together to transform text.</p><p>Capitalize the first letter of each word in "hello world": "Hello World"</p>',
+    },
+    input: "hello world",
+    expected: "Hello World",
+    before: 'const str = arr;\nconst result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'filter and transform objects',
+    instructions: {
+      'en': '<p>Filter an array of objects and transform the results. Combine <code>filter()</code> and <code>map()</code> to process complex data.</p><p>From [{name: "Alice", age: 25}, {name: "Bob", age: 17}, {name: "Charlie", age: 30}], get names of people 18 or older: ["Alice", "Charlie"]</p>',
+    },
+    input: [{name: "Alice", age: 25}, {name: "Bob", age: 17}, {name: "Charlie", age: 30}],
+    expected: ["Alice", "Charlie"],
+    before: 'const result = ',
+    after: ';',
+    codeLines: 3
+  },
+  {
+    name: 'reduce with objects',
+    instructions: {
+      'en': '<p>Use <code>reduce()</code> to transform an array into an object. This is useful for creating lookup tables or grouping data.</p><p>From [["a", 1], ["b", 2], ["c", 3]], create an object: {a: 1, b: 2, c: 3}</p>',
+    },
+    input: [["a", 1], ["b", 2], ["c", 3]],
+    expected: {a: 1, b: 2, c: 3},
+    before: 'const result = ',
+    after: ';',
+    codeLines: 3
   }
 ];
 
