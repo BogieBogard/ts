@@ -934,12 +934,118 @@ var levels = [
     codeLines: 5,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat',
     mdnName: 'Array.prototype.concat()'
+  },
+  {
+    name: 'Pick',
+    instructions: {
+      'en': '<p>TypeScript\'s <code>Pick&lt;T, K&gt;</code> creates a type by picking a set of properties <code>K</code> from <code>T</code>. In runtime JS, we can implement a <code>pick</code> function.</p><p>Create a new object with only the "a" and "c" properties from {a: 1, b: 2, c: 3}.</p>',
+    },
+    input: {a: 1, b: 2, c: 3},
+    expected: {a: 1, c: 3},
+    before: 'const keys = ["a", "c"];\n    const result: {a: number, c: number} = ',
+    after: ';',
+    codeLines: 5,
+    mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys',
+    mdnName: 'Pick<Type, Keys>'
+  },
+  {
+    name: 'Omit',
+    instructions: {
+      'en': '<p>TypeScript\'s <code>Omit&lt;T, K&gt;</code> creates a type by removing properties <code>K</code> from <code>T</code>. In JS, we can implement an <code>omit</code> function.</p><p>Create a new object without the "b" property from {a: 1, b: 2, c: 3}.</p>',
+    },
+    input: {a: 1, b: 2, c: 3},
+    expected: {a: 1, c: 3},
+    before: 'const keyToOmit = "b";\n    const result: {a: number, c: number} = ',
+    after: ';',
+    codeLines: 5,
+    mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys',
+    mdnName: 'Omit<Type, Keys>'
+  },
+  {
+    name: 'Partial',
+    instructions: {
+      'en': '<p>TypeScript\'s <code>Partial&lt;T&gt;</code> sets all properties of <code>T</code> to optional. In JS, this is often used when updating an object with a subset of properties.</p><p>Update {a: 1, b: 2} with {b: 3} using object spread syntax.</p>',
+    },
+    input: {a: 1, b: 2},
+    expected: {a: 1, b: 3},
+    before: 'const update = {b: 3};\n    const result: {a: number, b: number} = ',
+    after: ';',
+    codeLines: 3,
+    mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype',
+    mdnName: 'Partial<Type>'
+  },
+  {
+    name: 'Readonly',
+    instructions: {
+      'en': '<p>TypeScript\'s <code>Readonly&lt;T&gt;</code> marks all properties as readonly. In JS, <code>Object.freeze()</code> prevents modification of existing properties.</p><p>Freeze the object {a: 1} so it cannot be changed.</p>',
+    },
+    input: {a: 1},
+    expected: {a: 1},
+    before: 'const result: Readonly<{a: number}> = ',
+    after: ';',
+    codeLines: 3,
+    mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype',
+    mdnName: 'Readonly<Type>'
+  },
+  {
+    name: 'Record',
+    instructions: {
+      'en': '<p>TypeScript\'s <code>Record&lt;K, T&gt;</code> constructs an object type with keys <code>K</code> and values <code>T</code>. In JS, we can build an object from a list of keys.</p><p>Create an object where keys ["a", "b"] map to value 0: {a: 0, b: 0}</p>',
+    },
+    input: ["a", "b"],
+    expected: {a: 0, b: 0},
+    before: 'const value = 0;\n    const result: Record<string, number> = ',
+    after: ';',
+    codeLines: 5,
+    mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
+    mdnName: 'Record<Keys, Type>'
+  },
+  {
+    name: 'Tuple',
+    instructions: {
+      'en': '<p>TypeScript <code>Tuple</code> types express an array with a fixed number of elements whose types are known. In JS, we can check length and types.</p><p>Check if [1, "a"] is a valid [number, string] tuple (length 2, first is number, second is string).</p>',
+    },
+    input: [1, "a"],
+    expected: true,
+    before: 'const result: boolean = ',
+    after: ';',
+    codeLines: 4,
+    mdn: 'https://www.typescriptlang.org/docs/handbook/2/objects.html#tuple-types',
+    mdnName: 'Tuple Types'
+  },
+  {
+    name: 'findIndex',
+    instructions: {
+      'en': '<p>Use <code>findIndex</code> to return the index of the first element that satisfies a condition. Returns -1 if no element matches.</p><p>Find the index of the first number greater than 10 in [1, 5, 10, 15].</p>',
+    },
+    input: [1, 5, 10, 15],
+    expected: 3,
+    before: 'const result: number = ',
+    after: ';',
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex',
+    mdnName: 'Array.prototype.findIndex()'
+  },
+  {
+    name: 'fill',
+    instructions: {
+      'en': '<p>Use <code>fill</code> to change all elements in an array to a static value.</p><p>Fill the array [1, 2, 3] with 0s.</p>',
+    },
+    input: [1, 2, 3],
+    expected: [0, 0, 0],
+    before: 'const result: number[] = ',
+    after: ';',
+    codeLines: 3,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill',
+    mdnName: 'Array.prototype.fill()'
   }
 ];
 
 var levelWin = {
   name: 'win',
   instructions: {
-    'en': '<p>Congratulations! You\'ve completed all the TypeScript (TS) Practice challenges! 🎉</p><p>You\'ve learned how to use <code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>includes</code>, <code>sort</code>, <code>reverse</code>, <code>slice</code>, <code>concat</code>, <code>join</code>, <code>indexOf</code>, <code>flat</code>, and <code>flatMap</code> to solve common coding problems.</p><p>Keep practicing to master these essential array methods!</p>',
-  }
+    'en': '<p>Congratulations! You\'ve completed all the TypeScript (TS) Practice challenges! 🎉</p><p>You\'ve learned how to use <code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>includes</code>, <code>sort</code>, <code>reverse</code>, <code>slice</code>, <code>concat</code>, <code>join</code>, <code>indexOf</code>, <code>flat</code>, <code>flatMap</code>, <code>Pick</code>, <code>Omit</code>, <code>Partial</code>, <code>Readonly</code>, <code>Record</code>, <code>Tuple</code>, <code>findIndex</code>, and <code>fill</code> to solve common coding problems.</p><p>Keep practicing to master these essential array methods!</p>',
+  },
+  before: '',
+  after: ''
 };
