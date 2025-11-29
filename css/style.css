@@ -750,37 +750,7 @@ button:not(.disabled):active {
 }
 
 /* Data flow lines */
-.pond-connection {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(100, 200, 255, 0.3),
-    transparent
-  );
-  z-index: 14;
-  pointer-events: none;
-  animation: flowLine 4s linear infinite;
-  opacity: 0;
-}
 
-@keyframes flowLine {
-  0% {
-    left: -10%;
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.6;
-  }
-  90% {
-    opacity: 0.6;
-  }
-  100% {
-    left: 110%;
-    opacity: 0;
-  }
-}
 
 /* Floating data bubbles */
 .pond-bubble {
@@ -1064,53 +1034,6 @@ button:not(.disabled):active {
 
 .frog .bg {
   background-size: 60% 60%;
-}
-
-.lilypad.green .bg {
-  background-image: url("../images/lilypad-green.svg");
-}
-
-.lilypad.green.cb-friendly .bg {
-  background-image: url("../images/lilypad-green-color-assist.svg");
-}
-
-.lilypad.red .bg {
-  background-image: url("../images/lilypad-red.svg");
-}
-
-.lilypad.red.cb-friendly .bg {
-  background-image: url("../images/lilypad-red-color-assist.svg");
-}
-
-.lilypad.yellow .bg {
-  background-image: url("../images/lilypad-yellow.svg");
-}
-.lilypad.yellow.cb-friendly .bg {
-  background-image: url("../images/lilypad-yellow-color-assist.svg");
-}
-
-.frog.green .bg {
-  background-image: url("../images/frog-green.svg");
-}
-
-.frog.green.cb-friendly .bg {
-  background-image: url("../images/frog-green-color-assist.svg");
-}
-
-.frog.red .bg {
-  background-image: url("../images/frog-red.svg");
-}
-
-.frog.red.cb-friendly .bg {
-  background-image: url("../images/frog-red-color-assist.svg");
-}
-
-.frog.yellow .bg {
-  background-image: url("../images/frog-yellow.svg");
-}
-
-.frog.yellow.cb-friendly .bg {
-  background-image: url("../images/frog-yellow-color-assist.svg");
 }
 
 .wrap {

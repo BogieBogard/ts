@@ -319,7 +319,7 @@ var game = {
     // Add floating particles for visual effect
     game.createPondParticles();
     game.createPondBubbles();
-    game.createFlowLines();
+
 
     // Update MDN link
     if (level.mdn) {
@@ -406,25 +406,7 @@ var game = {
     }
   },
 
-  createFlowLines: function() {
-    $('.pond-connection').remove();
-    
-    var lineCount = 3;
-    for (var i = 0; i < lineCount; i++) {
-      var line = $('<div class="pond-connection"></div>');
-      var top = Math.random() * 100;
-      var width = 30 + Math.random() * 50; // 30-80px
-      var delay = Math.random() * 4;
-      
-      line.css({
-        top: top + '%',
-        width: width + 'px',
-        animationDelay: delay + 's'
-      });
-      
-      $('#background').append(line);
-    }
-  },
+
 
 
 
