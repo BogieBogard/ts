@@ -8,7 +8,7 @@ var game = {
   changed: false,
   clickedCode: null,
 
-  start: function() {
+  start: function () {
     // navigator.language can include '-'
     // ref: https://developer.mozilla.org/en-US/docs/Web/API/NavigatorLanguage/language
     var requestLang = window.navigator.language.split('-')[0];
@@ -29,8 +29,8 @@ var game = {
     game.loadLevel(levels[game.level]);
   },
 
-  setHandlers: function() {
-    $('#next').on('click', function() {
+  setHandlers: function () {
+    $('#next').on('click', function () {
       $('#code').focus();
 
       if ($(this).hasClass('disabled')) {
@@ -45,7 +45,7 @@ var game = {
       $('.frog').addClass('animated bounceOutUp');
       $('.arrow, #next').addClass('disabled');
 
-      setTimeout(function() {
+      setTimeout(function () {
         if (game.level >= levels.length - 1) {
           game.win();
         } else {
@@ -54,7 +54,7 @@ var game = {
       }, 2000);
     });
 
-    $('#code').on('keydown', function(e) {
+    $('#code').on('keydown', function (e) {
       if (e.keyCode === 13) {
 
         if (e.ctrlKey || e.metaKey) {
@@ -81,24 +81,24 @@ var game = {
         }
       }
     }).on('input', game.debounce(game.check, 500))
-    .on('input', function() {
-      game.changed = true;
-      $('#next').removeClass('animated animation').addClass('disabled');
-      game.highlightSyntax();
-    })
-    .on('scroll', function() {
-      var scrollTop = $(this).scrollTop();
-      var scrollLeft = $(this).scrollLeft();
-      $('#code-highlight').css({
-        'transform': 'translate(' + (-scrollLeft) + 'px, ' + (-scrollTop) + 'px)'
+      .on('input', function () {
+        game.changed = true;
+        $('#next').removeClass('animated animation').addClass('disabled');
+        game.highlightSyntax();
+      })
+      .on('scroll', function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollLeft = $(this).scrollLeft();
+        $('#code-highlight').css({
+          'transform': 'translate(' + (-scrollLeft) + 'px, ' + (-scrollTop) + 'px)'
+        });
       });
-    });
 
-    $('#editor').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+    $('#editor').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
       $(this).removeClass();
     });
 
-    $('#labelReset').on('click', function() {
+    $('#labelReset').on('click', function () {
       var warningReset = messages.warningReset[game.language] || messages.warningReset.en;
       var r = confirm(warningReset);
 
@@ -113,11 +113,11 @@ var game = {
     });
 
 
-    $('#language').on('change', function() {
+    $('#language').on('change', function () {
       window.location.hash = $(this).val();
     });
 
-    $('#difficulty').on('change', function() {
+    $('#difficulty').on('change', function () {
       game.difficulty = $('input:checked', '#difficulty').val();
 
       // setting height will prevent a slight jump when the animation starts
@@ -130,7 +130,7 @@ var game = {
       if (game.difficulty == 'hard' || game.difficulty == 'medium') {
         $instructions.slideUp();
 
-        $markers.each(function() {
+        $markers.each(function () {
           var $marker = $(this);
           if ($marker[0].hasAttribute('title')) {
             $marker.attr('data-title', $marker.attr('title'));
@@ -140,7 +140,7 @@ var game = {
       } else {
         $instructions.css('height', '').slideDown();
 
-        $markers.each(function() {
+        $markers.each(function () {
           var $marker = $(this);
           if ($marker[0].hasAttribute('data-title')) {
             $marker.attr('title', $marker.attr('data-title'));
@@ -150,7 +150,7 @@ var game = {
       }
     });
 
-    $('#colorblind').on('change', function() {
+    $('#colorblind').on('change', function () {
       game.colorblind = $('input:checked', '#colorblind').val();
 
       if (game.colorblind == 'true') {
@@ -160,28 +160,28 @@ var game = {
       }
     });
 
-    $('body').on('click', function() {
+    $('body').on('click', function () {
       $('.tooltip').hide();
       clickedCode = null;
     });
 
-    $('.tooltip, .toggle, #level-indicator').on('click', function(e) {
+    $('.tooltip, .toggle, #level-indicator').on('click', function (e) {
       e.stopPropagation();
     });
 
-    $(window).on('beforeunload', function() {
+    $(window).on('beforeunload', function () {
       game.saveAnswer();
       localStorage.setItem('level', game.level);
       localStorage.setItem('answers', JSON.stringify(game.answers));
       localStorage.setItem('solved', JSON.stringify(game.solved));
       localStorage.setItem('colorblind', JSON.stringify(game.colorblind));
-    }).on('hashchange', function() {
+    }).on('hashchange', function () {
       game.language = window.location.hash.substring(1) || 'en';
       game.translate();
 
       $('#tweet iframe').remove();
       var html = '<a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="https://flexboxfroggy.com" data-via="thomashpark">Tweet</a> ' +
-                 '<a href="https://twitter.com/thomashpark" class="twitter-follow-button" data-show-count="false">Follow @thomashpark</a>';
+        '<a href="https://twitter.com/thomashpark" class="twitter-follow-button" data-show-count="false">Follow @thomashpark</a>';
       $('#tweet').html(html);
 
       if (typeof twttr !== 'undefined') {
@@ -194,16 +194,16 @@ var game = {
     });
   },
 
-  prev: function() {
+  prev: function () {
     this.level--;
 
     var levelData = levels[this.level];
     this.loadLevel(levelData);
   },
 
-  next: function() {
+  next: function () {
     if (this.difficulty === "hard") {
-      this.level = Math.floor(Math.random()* levels.length)
+      this.level = Math.floor(Math.random() * levels.length)
     } else {
       this.level++
     }
@@ -212,9 +212,9 @@ var game = {
     this.loadLevel(levelData);
   },
 
-  loadMenu: function() {
-    levels.forEach(function(level, i) {
-      var levelMarker = $('<span/>').addClass('level-marker').attr({'data-level': i, 'title': level.name}).text(i+1);
+  loadMenu: function () {
+    levels.forEach(function (level, i) {
+      var levelMarker = $('<span/>').addClass('level-marker').attr({ 'data-level': i, 'title': level.name }).text(i + 1);
 
       if ($.inArray(level.name, game.solved) !== -1) {
         levelMarker.addClass('solved');
@@ -223,7 +223,7 @@ var game = {
       levelMarker.appendTo('#levels');
     });
 
-    $('.level-marker').on('click', function() {
+    $('.level-marker').on('click', function () {
       game.saveAnswer();
 
       var level = $(this).attr('data-level');
@@ -231,12 +231,12 @@ var game = {
       game.loadLevel(levels[level]);
     });
 
-    $('#level-indicator').on('click', function() {
+    $('#level-indicator').on('click', function () {
       $('#levelsWrapper').toggle();
       $('#instructions .tooltip').remove();
     });
 
-    $('.arrow.left').on('click', function() {
+    $('.arrow.left').on('click', function () {
       if ($(this).hasClass('disabled')) {
         return;
       }
@@ -245,7 +245,7 @@ var game = {
       game.prev();
     });
 
-    $('.arrow.right').on('click', function() {
+    $('.arrow.right').on('click', function () {
       if ($(this).hasClass('disabled')) {
         return;
       }
@@ -253,9 +253,23 @@ var game = {
       game.saveAnswer();
       game.next();
     });
+
+    $('#revealAnswer').on('click', function () {
+      var level = levels[game.level];
+      var $solution = $('#solution');
+
+      if ($solution.is(':visible')) {
+        $solution.slideUp();
+        $(this).text(messages.revealAnswer && messages.revealAnswer[game.language] || 'Reveal Answer');
+      } else {
+        var solutionText = level.solution || '// Solution not available for this level yet.';
+        $solution.text(solutionText).slideDown();
+        $(this).text(messages.hideAnswer && messages.hideAnswer[game.language] || 'Hide Answer');
+      }
+    });
   },
 
-  loadLevel: function(level) {
+  loadLevel: function (level) {
     $('#editor').show();
     $('#share').hide();
     $('#background, #pond').removeClass('wrap').attr('style', '').empty();
@@ -291,19 +305,19 @@ var game = {
 
     // Display input array and expected output
     var displayHtml = '<div class="code-result">';
-    
+
     if (level.input) {
       displayHtml += '<div class="input-array"><strong>Input Array:</strong> <code>' + JSON.stringify(level.input) + '</code></div>';
     }
-    
+
     if (level.expected) {
       displayHtml += '<div class="expected-array"><strong>Expected Output:</strong> <code>' + JSON.stringify(level.expected) + '</code></div>';
     }
-    
+
     displayHtml += '</div>';
     $('#pond').html(displayHtml);
     $('#background').html(''); // Clear background
-    
+
     // Remove level classes and add appropriate one
     $('#background').removeClass('level-early level-mid level-advanced level-expert');
     var levelClass = 'level-early';
@@ -315,7 +329,7 @@ var game = {
       levelClass = 'level-mid';
     }
     $('#background').addClass(levelClass);
-    
+
     // Add floating particles for visual effect
     game.createPondParticles();
     game.createPondBubbles();
@@ -330,27 +344,31 @@ var game = {
       $('#gridGarden').hide();
     }
 
+    // Reset solution display
+    $('#solution').hide().text('');
+    $('#revealAnswer').text(messages.revealAnswer && messages.revealAnswer[game.language] || 'Reveal Answer');
+
     game.changed = false;
     game.executeCode();
     game.check();
   },
 
-  createPondParticles: function() {
+  createPondParticles: function () {
     // Remove existing particles
     $('.pond-particle').remove();
-    
+
     // Different types of code-like symbols
     var bracketSymbols = ['[', ']', '{', '}', '()'];
     var arrowSymbols = ['=>', '->', '→'];
     var dotSymbols = ['...', '·', '•'];
     var numberSymbols = ['1', '2', '3', '0', '[]', '{}'];
-    
+
     var particleCount = 12;
-    
+
     for (var i = 0; i < particleCount; i++) {
       var type = Math.random();
       var symbol, className;
-      
+
       if (type < 0.3) {
         symbol = bracketSymbols[Math.floor(Math.random() * bracketSymbols.length)];
         className = 'bracket';
@@ -364,36 +382,36 @@ var game = {
         symbol = numberSymbols[Math.floor(Math.random() * numberSymbols.length)];
         className = 'number';
       }
-      
+
       var particle = $('<div class="pond-particle ' + className + '">' + symbol + '</div>');
-      
+
       // Random starting position
       var startX = Math.random() * 100;
       var delay = Math.random() * 8;
       var duration = 10 + Math.random() * 10; // 10-20 seconds
       var drift = (Math.random() - 0.5) * 40; // Random horizontal drift
-      
+
       particle.css({
         left: startX + '%',
         animationDelay: delay + 's',
         animationDuration: duration + 's',
         '--drift': drift + 'px'
       });
-      
+
       $('#background').append(particle);
     }
   },
 
-  createPondBubbles: function() {
+  createPondBubbles: function () {
     $('.pond-bubble').remove();
-    
+
     var bubbleCount = 6;
     for (var i = 0; i < bubbleCount; i++) {
       var bubble = $('<div class="pond-bubble"></div>');
       var startX = Math.random() * 100;
       var delay = Math.random() * 8;
       var size = 6 + Math.random() * 6; // 6-12px
-      
+
       bubble.css({
         left: startX + '%',
         bottom: Math.random() * 30 + '%',
@@ -401,7 +419,7 @@ var game = {
         height: size + 'px',
         animationDelay: delay + 's'
       });
-      
+
       $('#background').append(bubble);
     }
   },
@@ -410,45 +428,45 @@ var game = {
 
 
 
-  createSuccessSparkles: function() {
+  createSuccessSparkles: function () {
     var sparkleCount = 15;
     var $pond = $('#pond');
-    
+
     for (var i = 0; i < sparkleCount; i++) {
       var sparkle = $('<div class="pond-sparkle"></div>');
       var angle = (Math.PI * 2 * i) / sparkleCount;
       var distance = 50 + Math.random() * 30;
       var x = Math.cos(angle) * distance;
       var y = Math.sin(angle) * distance;
-      
+
       sparkle.css({
         '--sparkle-x': x + 'px',
         '--sparkle-y': y + 'px',
         left: '50%',
         top: '50%'
       });
-      
+
       $pond.append(sparkle);
-      
+
       // Remove after animation
-      setTimeout(function() {
+      setTimeout(function () {
         sparkle.remove();
       }, 1500);
     }
   },
 
-  loadDocs: function() {
-    $('#instructions code').each(function() {
+  loadDocs: function () {
+    $('#instructions code').each(function () {
       var code = $(this);
       var text = code.text();
 
       if (text in docs) {
         code.addClass('help');
-        code.on('click', function(e) {
+        code.on('click', function (e) {
           e.stopPropagation();
 
           // If click same code when tooltip already displayed, just remove current tooltip.
-          if ($('#instructions .tooltip').length !== 0 && clickedCode === code){
+          if ($('#instructions .tooltip').length !== 0 && clickedCode === code) {
             $('#instructions .tooltip').remove();
             return;
           }
@@ -472,7 +490,7 @@ var game = {
             return pValue;
           };
 
-          $('#instructions .tooltip code').on('click', function(event) {
+          $('#instructions .tooltip code').on('click', function (event) {
             var methodName = text;
             var methodValue = event.target.textContent.split(' ')[0];
             game.writeCode(methodName, methodValue);
@@ -485,36 +503,36 @@ var game = {
     });
   },
 
-  executeCode: function() {
+  executeCode: function () {
     var level = levels[game.level];
     var code = $('#code').val();
-    
+
     // Clean up the code - trim and normalize whitespace but preserve arrow functions
     code = code.trim();
     // Replace multiple newlines/spaces with single space, but preserve => syntax
     code = code.replace(/\s*\n\s*/g, ' ').replace(/\s+/g, ' ');
-    
+
     // Don't execute if code is empty
     if (!code) {
       game.lastResult = null;
       game.lastError = null;
       return;
     }
-    
+
     try {
       // Build the code - user writes: "arr.map(x => x * 2)"
       // We need: "var arr = [1, 2, 3];\nconst result = arr.map(x => x * 2);"
       var beforeCode = level.before;
       var afterCode = level.after;
-      
+
       // Build full code with dynamic array
-      var fullCode = 'var arr = ' + JSON.stringify(level.input) + ';\n' + 
-                     beforeCode + code + afterCode;
-      
+      var fullCode = 'var arr = ' + JSON.stringify(level.input) + ';\n' +
+        beforeCode + code + afterCode;
+
       // Execute in a function scope to capture result
       // We append an assignment to capture the result variable
       fullCode += '\nwindow.__gameResult = result;';
-      
+
       try {
         // Transpile TypeScript to JavaScript
         var transpiled = Babel.transform(fullCode, {
@@ -522,7 +540,7 @@ var game = {
           filename: 'solution.ts'
         }).code;
 
-        (function() {
+        (function () {
           // Execute the modified code
           eval(transpiled);
           if (window.__gameResult === undefined) {
@@ -539,12 +557,12 @@ var game = {
         // Re-throw with the actual error message
         throw evalError;
       }
-      
+
       // Store result for comparison
       game.lastResult = result;
       game.lastError = null;
       game.saveAnswer();
-      
+
       // Update visual display
       game.updateDisplay(result);
     } catch (error) {
@@ -554,7 +572,7 @@ var game = {
     }
   },
 
-  check: async function() {
+  check: async function () {
     if (!document.startViewTransition) {
       game.executeCode();
       game.compare();
@@ -570,14 +588,14 @@ var game = {
     }
   },
 
-  compare: function() {
+  compare: function () {
     var level = levels[game.level];
     var correct = false;
-    
+
     if (game.lastResult !== undefined && game.lastResult !== null) {
       // Compare result with expected output
       var expected = level.expected;
-      
+
       // Deep comparison for arrays and objects
       if (Array.isArray(expected) && Array.isArray(game.lastResult)) {
         correct = JSON.stringify(expected) === JSON.stringify(game.lastResult);
@@ -605,51 +623,51 @@ var game = {
     }
   },
 
-  triggerSuccessEffects: function() {
+  triggerSuccessEffects: function () {
     // Create sparkle effect
     game.createSuccessSparkles();
-    
+
     // Enhanced particle burst
-    setTimeout(function() {
+    setTimeout(function () {
       for (var i = 0; i < 5; i++) {
-        setTimeout(function() {
+        setTimeout(function () {
           game.createPondParticles();
         }, i * 200);
       }
     }, 100);
   },
 
-  updateDisplay: function(result) {
+  updateDisplay: function (result) {
     var level = levels[game.level];
     var displayHtml = '<div class="code-result">';
-    
+
     // Show input array
     if (level.input) {
       displayHtml += '<div class="input-array"><strong>Input:</strong> <code>' + JSON.stringify(level.input) + '</code></div>';
     }
-    
+
     // Show result
     displayHtml += '<div class="output-array"><strong>Your Result:</strong> <code>' + JSON.stringify(result) + '</code></div>';
-    
+
     // Show expected
     if (level.expected) {
       displayHtml += '<div class="expected-array"><strong>Expected:</strong> <code>' + JSON.stringify(level.expected) + '</code></div>';
     }
-    
+
     displayHtml += '</div>';
     $('#pond').html(displayHtml);
   },
 
-  saveAnswer: function() {
+  saveAnswer: function () {
     var level = levels[this.level];
     game.answers[level.name] = $('#code').val();
   },
 
-  tryagain: function() {
+  tryagain: function () {
     $('#editor').addClass('animated shake');
   },
 
-  win: function() {
+  win: function () {
     var solution = $('#code').val();
 
     this.loadLevel(levelWin);
@@ -660,14 +678,14 @@ var game = {
     $('.frog .bg').removeClass('pulse').addClass('bounce');
   },
 
-  transform: function() {
+  transform: function () {
     var scale = 1 + ((Math.random() / 5) - 0.2);
     var rotate = 360 * Math.random();
 
-    return {'transform': 'scale(' + scale + ') rotate(' + rotate + 'deg)'};
+    return { 'transform': 'scale(' + scale + ') rotate(' + rotate + 'deg)' };
   },
 
-  translate: function() {
+  translate: function () {
     document.title = messages.title[game.language] || messages.title.en;
     $('html').attr('lang', game.language);
 
@@ -676,21 +694,21 @@ var game = {
     $('#instructions').html(instructions);
     game.loadDocs();
 
-    $('.translate').each(function() {
+    $('.translate').each(function () {
       var label = $(this).attr('id');
       if (messages[label]) {
         var text = messages[label][game.language] || messages[label].en;
-	  }
+      }
 
       $('#' + label).text(text);
     });
   },
 
-  debounce: function(func, wait, immediate) {
+  debounce: function (func, wait, immediate) {
     var timeout;
-    return function() {
+    return function () {
       var context = this, args = arguments;
-      var later = function() {
+      var later = function () {
         timeout = null;
         if (!immediate) func.apply(context, args);
       };
@@ -701,10 +719,10 @@ var game = {
     };
   },
 
-  writeCode: function(methodName, methodValue){
+  writeCode: function (methodName, methodValue) {
     var code = $('#code').val();
     var keywords = Object.keys(docs);
-    
+
     // Do nothing when click method name inside Tooltip
     if (keywords.includes(methodValue)) return;
 
@@ -721,18 +739,18 @@ var game = {
     game.highlightSyntax();
   },
 
-  highlightSyntax: function() {
+  highlightSyntax: function () {
     var code = $('#code').val();
     var highlighted = game.parseCode(code);
     var $code = $('#code');
     var $highlight = $('#code-highlight');
-    
+
     $highlight.html(highlighted);
-    
+
     // Match textarea scroll height
     var scrollHeight = $code[0].scrollHeight;
     $highlight.css('height', scrollHeight + 'px');
-    
+
     // Sync scroll position using transform
     var scrollTop = $code.scrollTop();
     var scrollLeft = $code.scrollLeft();
@@ -741,11 +759,11 @@ var game = {
     });
   },
 
-  parseCode: function(code) {
+  parseCode: function (code) {
     if (!code) return '';
-    
+
     // Escape HTML
-    var escapeHtml = function(text) {
+    var escapeHtml = function (text) {
       var map = {
         '&': '&amp;',
         '<': '&lt;',
@@ -753,26 +771,26 @@ var game = {
         '"': '&quot;',
         "'": '&#039;'
       };
-      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+      return text.replace(/[&<>"']/g, function (m) { return map[m]; });
     };
-    
+
     // Keywords
     var keywords = ['const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'do', 'switch', 'case', 'break', 'continue', 'default', 'try', 'catch', 'finally', 'throw', 'new', 'this', 'typeof', 'instanceof', 'void', 'delete', 'in', 'of', 'async', 'await', 'class', 'extends', 'super', 'static', 'import', 'export', 'from', 'as', 'type', 'interface', 'enum'];
-    
+
     // Common array methods and functions
     var functions = ['map', 'filter', 'reduce', 'forEach', 'find', 'findIndex', 'some', 'every', 'includes', 'indexOf', 'slice', 'splice', 'concat', 'join', 'push', 'pop', 'shift', 'unshift', 'sort', 'reverse', 'toString', 'parseInt', 'parseFloat', 'isNaN', 'isFinite', 'Array', 'Object', 'String', 'Number', 'Boolean', 'Date', 'Math', 'JSON', 'console', 'log', 'error', 'warn', 'info'];
-    
+
     var result = '';
     var i = 0;
     var inString = false;
     var stringChar = '';
     var inComment = false;
     var commentType = '';
-    
+
     while (i < code.length) {
       var char = code[i];
       var nextChar = i + 1 < code.length ? code[i + 1] : '';
-      
+
       // Handle comments
       if (!inString && !inComment) {
         if (char === '/' && nextChar === '/') {
@@ -789,7 +807,7 @@ var game = {
           continue;
         }
       }
-      
+
       if (inComment) {
         if (commentType === 'line' && char === '\n') {
           inComment = false;
@@ -805,7 +823,7 @@ var game = {
           continue;
         }
       }
-      
+
       // Handle strings
       if (!inComment && (char === '"' || char === "'" || char === '`')) {
         if (!inString) {
@@ -821,13 +839,13 @@ var game = {
         i++;
         continue;
       }
-      
+
       if (inString) {
         result += escapeHtml(char);
         i++;
         continue;
       }
-      
+
       // Handle numbers
       if (/[0-9]/.test(char) && (i === 0 || !/[a-zA-Z_$]/.test(code[i - 1]))) {
         var num = '';
@@ -838,7 +856,7 @@ var game = {
         result += '<span class="number">' + escapeHtml(num) + '</span>';
         continue;
       }
-      
+
       // Handle operators and punctuation
       if (/[=+\-*/%&|<>!?:]/.test(char)) {
         var op = char;
@@ -862,13 +880,13 @@ var game = {
         i++;
         continue;
       }
-      
+
       if (/[()[\]{};,]/.test(char)) {
         result += '<span class="punctuation">' + escapeHtml(char) + '</span>';
         i++;
         continue;
       }
-      
+
       // Handle identifiers, keywords, and functions
       if (/[a-zA-Z_$]/.test(char)) {
         var word = '';
@@ -877,7 +895,7 @@ var game = {
           word += code[i];
           i++;
         }
-        
+
         // Check if it's a keyword
         if (keywords.indexOf(word) !== -1) {
           result += '<span class="keyword">' + escapeHtml(word) + '</span>';
@@ -900,7 +918,7 @@ var game = {
         }
         continue;
       }
-      
+
       // Handle whitespace and other characters
       if (char === '\n') {
         result += '\n';
@@ -911,18 +929,18 @@ var game = {
       }
       i++;
     }
-    
+
     if (inString) {
       result += '</span>';
     }
     if (inComment) {
       result += '</span>';
     }
-    
+
     return result;
   }
 };
 
-$(document).ready(function() {
+$(document).ready(function () {
   game.start();
 });

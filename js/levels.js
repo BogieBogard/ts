@@ -1,8 +1,50 @@
 var levels = [
   {
+    name: 'basic types',
+    instructions: {
+      'en': '<p>Welcome to TypeScript! In TypeScript, we can specify the type of a variable using <code>: type</code> after the variable name.</p><p>Create a variable named <code>name</code> with the type <code>string</code> and assign it the value "Snowman".</p>',
+    },
+    input: [],
+    expected: "Snowman",
+    before: 'const name: string = ',
+    after: ';\nconst result = name;',
+    codeLines: 3,
+    mdn: 'https://www.typescriptlang.org/docs/handbook/basic-types.html',
+    mdnName: 'TypeScript Basic Types',
+    solution: 'const name: string = "Snowman";'
+  },
+  {
+    name: 'interfaces',
+    instructions: {
+      'en': '<p>Interfaces allow us to define the shape of an object. An interface specifies which properties an object must have and their types.</p><p>Create an object that matches the <code>Reindeer</code> interface: <code>interface Reindeer { name: string; noseColor: string; }</code>.</p>',
+    },
+    input: [],
+    expected: { name: "Rudolph", noseColor: "red" },
+    before: 'interface Reindeer { name: string; noseColor: string; }\n\nconst reindeer: Reindeer = ',
+    after: ';\nconst result = reindeer;',
+    codeLines: 5,
+    mdn: 'https://www.typescriptlang.org/docs/handbook/interfaces.html',
+    mdnName: 'TypeScript Interfaces',
+    solution: 'const reindeer: Reindeer = { name: "Rudolph", noseColor: "red" };'
+  },
+  {
+    name: 'optional properties',
+    instructions: {
+      'en': '<p>Sometimes properties are optional. In an interface, we mark them with a <code>?</code>.</p><p>Create a <code>Gift</code> object where <code>weight</code> is optional, and only provide the <code>name</code>.</p>',
+    },
+    input: [],
+    expected: { name: "Toy Train" },
+    before: 'interface Gift { name: string; weight?: number; }\n\nconst gift: Gift = ',
+    after: ';\nconst result = gift;',
+    codeLines: 5,
+    mdn: 'https://www.typescriptlang.org/docs/handbook/interfaces.html#optional-properties',
+    mdnName: 'Optional Properties',
+    solution: 'const gift: Gift = { name: "Toy Train" };'
+  },
+  {
     name: 'map 1',
     instructions: {
-      'en': '<p>Welcome to TypeScript (TS) Practice! Use the <code>map</code> method to transform each element in the array. The <code>map</code> method creates a new array by calling a function on every element.</p><p>For example, to double each number: <code>arr.map(x => x * 2)</code></p><p>Transform the array [1, 2, 3] to [2, 4, 6] by doubling each number.</p>',
+      'en': '<p>Use the <code>map</code> method to transform each element in the array. The <code>map</code> method creates a new array by calling a function on every element.</p><p>For example, to double each number: <code>arr.map(x => x * 2)</code></p><p>Transform the array [1, 2, 3] to [2, 4, 6] by doubling each number.</p>',
     },
     input: [1, 2, 3],
     expected: [2, 4, 6],
@@ -10,7 +52,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-    mdnName: 'Array.prototype.map()'
+    mdnName: 'Array.prototype.map()',
+    solution: 'arr.map(x => x * 2)'
   },
   {
     name: 'map 2',
@@ -23,7 +66,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-    mdnName: 'Array.prototype.map()'
+    mdnName: 'Array.prototype.map()',
+    solution: 'arr.map(String)'
   },
   {
     name: 'filter 1',
@@ -36,7 +80,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
-    mdnName: 'Array.prototype.filter()'
+    mdnName: 'Array.prototype.filter()',
+    solution: 'arr.filter(x => x > 3)'
   },
   {
     name: 'filter 2',
@@ -49,7 +94,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
-    mdnName: 'Array.prototype.filter()'
+    mdnName: 'Array.prototype.filter()',
+    solution: 'arr.filter(x => x % 2 === 0)'
   },
   {
     name: 'reduce 1',
@@ -62,7 +108,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.reduce((sum, x) => sum + x, 0)'
   },
   {
     name: 'find 1',
@@ -75,7 +122,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find',
-    mdnName: 'Array.prototype.find()'
+    mdnName: 'Array.prototype.find()',
+    solution: 'arr.find(x => x > 2)'
   },
   {
     name: 'some 1',
@@ -88,7 +136,9 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some',
-    mdnName: 'Array.prototype.some()'
+    mdnName: 'Array.prototype.some()',
+    solution: 'arr.some(x => x > 4)',
+    solution: 'arr.some(x => x > 4)'
   },
   {
     name: 'every 1',
@@ -101,7 +151,9 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every',
-    mdnName: 'Array.prototype.every()'
+    mdnName: 'Array.prototype.every()',
+    solution: 'arr.every(x => x % 2 === 0)',
+    solution: 'arr.every(x => x % 2 === 0)'
   },
   {
     name: 'includes 1',
@@ -114,7 +166,9 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes',
-    mdnName: 'Array.prototype.includes()'
+    mdnName: 'Array.prototype.includes()',
+    solution: 'arr.includes(3)',
+    solution: 'arr.includes(3)'
   },
   {
     name: 'map and filter',
@@ -127,7 +181,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-    mdnName: 'Array.prototype.map()'
+    mdnName: 'Array.prototype.map()',
+    solution: 'arr.map(x => x * 2).filter(x => x > 5)'
   },
   {
     name: 'reduce advanced',
@@ -140,33 +195,36 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.reduce((max, x) => x > max ? x : max, arr[0])'
   },
   {
     name: 'map with objects',
     instructions: {
       'en': '<p>Use <code>map</code> to transform an array of objects. Extract a property from each object.</p><p>From [{name: "Santa", age: 1750}, {name: "Elf", age: 150}], extract the ages: [1750, 150]</p>',
     },
-    input: [{name: "Santa", age: 1750}, {name: "Elf", age: 150}],
+    input: [{ name: "Santa", age: 1750 }, { name: "Elf", age: 150 }],
     expected: [1750, 150],
     before: 'const result: number[] = ',
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-    mdnName: 'Array.prototype.map()'
+    mdnName: 'Array.prototype.map()',
+    solution: 'arr.map(x => x.age)'
   },
   {
     name: 'filter with objects',
     instructions: {
       'en': '<p>Use <code>filter</code> to filter an array of objects based on a property value.</p><p>From [{name: "Rudolph", age: 9}, {name: "Comet", age: 8}, {name: "Cupid", age: 9}], get only reindeer with age >= 9: [{name: "Rudolph", age: 9}, {name: "Cupid", age: 9}]</p>',
     },
-    input: [{name: "Rudolph", age: 9}, {name: "Comet", age: 8}, {name: "Cupid", age: 9}],
-    expected: [{name: "Rudolph", age: 9}, {name: "Cupid", age: 9}],
+    input: [{ name: "Rudolph", age: 9 }, { name: "Comet", age: 8 }, { name: "Cupid", age: 9 }],
+    expected: [{ name: "Rudolph", age: 9 }, { name: "Cupid", age: 9 }],
     before: 'const result: {name: string, age: number}[] = ',
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
-    mdnName: 'Array.prototype.filter()'
+    mdnName: 'Array.prototype.filter()',
+    solution: 'arr.filter(x => x.age >= 9)'
   },
   {
     name: 'sort 1',
@@ -179,7 +237,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
-    mdnName: 'Array.prototype.sort()'
+    mdnName: 'Array.prototype.sort()',
+    solution: 'arr.sort((a, b) => a - b)'
   },
   {
     name: 'sort 2',
@@ -192,7 +251,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
-    mdnName: 'Array.prototype.sort()'
+    mdnName: 'Array.prototype.sort()',
+    solution: 'arr.sort((a, b) => b - a)'
   },
   {
     name: 'reverse',
@@ -205,7 +265,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse',
-    mdnName: 'Array.prototype.reverse()'
+    mdnName: 'Array.prototype.reverse()',
+    solution: 'arr.reverse()'
   },
   {
     name: 'slice 1',
@@ -218,7 +279,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
-    mdnName: 'Array.prototype.slice()'
+    mdnName: 'Array.prototype.slice()',
+    solution: 'arr.slice(1, 3)'
   },
   {
     name: 'slice 2',
@@ -231,7 +293,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
-    mdnName: 'Array.prototype.slice()'
+    mdnName: 'Array.prototype.slice()',
+    solution: 'arr.slice(2)'
   },
   {
     name: 'concat',
@@ -244,7 +307,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat',
-    mdnName: 'Array.prototype.concat()'
+    mdnName: 'Array.prototype.concat()',
+    solution: 'arr.concat([4, 5, 6])'
   },
   {
     name: 'join',
@@ -257,7 +321,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join',
-    mdnName: 'Array.prototype.join()'
+    mdnName: 'Array.prototype.join()',
+    solution: 'arr.join(",")'
   },
   {
     name: 'indexOf',
@@ -270,7 +335,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf',
-    mdnName: 'Array.prototype.indexOf()'
+    mdnName: 'Array.prototype.indexOf()',
+    solution: 'arr.indexOf(30)'
   },
   {
     name: 'flat',
@@ -283,7 +349,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat',
-    mdnName: 'Array.prototype.flat()'
+    mdnName: 'Array.prototype.flat()',
+    solution: 'arr.flat()'
   },
   {
     name: 'map 3',
@@ -329,8 +396,8 @@ var levels = [
     instructions: {
       'en': '<p>Use <code>reduce</code> to group elements. Create an object that groups elements by a property or condition.</p><p>From [{type: "fruit", name: "apple"}, {type: "vegetable", name: "carrot"}, {type: "fruit", name: "banana"}], count items by type: {fruit: 2, vegetable: 1}</p>',
     },
-    input: [{type: "fruit", name: "apple"}, {type: "vegetable", name: "carrot"}, {type: "fruit", name: "banana"}],
-    expected: {fruit: 2, vegetable: 1},
+    input: [{ type: "fruit", name: "apple" }, { type: "vegetable", name: "carrot" }, { type: "fruit", name: "banana" }],
+    expected: { fruit: 2, vegetable: 1 },
     before: 'const result: Record<string, number> = ',
     after: ';',
     codeLines: 5,
@@ -342,8 +409,8 @@ var levels = [
     instructions: {
       'en': '<p>Use <code>find</code> with objects to find the first object that matches a condition.</p><p>From [{name: "Alice", age: 25}, {name: "Bob", age: 30}, {name: "Charlie", age: 20}], find the first person with age > 25: {name: "Bob", age: 30}</p>',
     },
-    input: [{name: "Alice", age: 25}, {name: "Bob", age: 30}, {name: "Charlie", age: 20}],
-    expected: {name: "Bob", age: 30},
+    input: [{ name: "Alice", age: 25 }, { name: "Bob", age: 30 }, { name: "Charlie", age: 20 }],
+    expected: { name: "Bob", age: 30 },
     before: 'const result: {name: string, age: number} | undefined = ',
     after: ';',
     codeLines: 3,
@@ -374,7 +441,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap',
-    mdnName: 'Array.prototype.flatMap()'
+    mdnName: 'Array.prototype.flatMap()',
+    solution: 'arr.flatMap(x => [x, x * 2])'
   },
   {
     name: 'map with nested',
@@ -394,7 +462,7 @@ var levels = [
     instructions: {
       'en': '<p>Real-world scenario: Process holiday shopping data. From items with prices, calculate the total cost of items that cost more than $10.</p><p>From [{name: "candy cane", price: 5}, {name: "toy train", price: 50}, {name: "stocking", price: 15}], sum prices of items > $10: 65</p>',
     },
-    input: [{name: "candy cane", price: 5}, {name: "toy train", price: 50}, {name: "stocking", price: 15}],
+    input: [{ name: "candy cane", price: 5 }, { name: "toy train", price: 50 }, { name: "stocking", price: 15 }],
     expected: 65,
     before: 'const result: number = ',
     after: ';',
@@ -407,7 +475,7 @@ var levels = [
     instructions: {
       'en': '<p>Real-world scenario: Format user data. Extract and format names from user objects.</p><p>From [{firstName: "Santa", lastName: "Claus"}, {firstName: "Mrs", lastName: "Claus"}], create full names: ["Santa Claus", "Mrs Claus"]</p>',
     },
-    input: [{firstName: "Santa", lastName: "Claus"}, {firstName: "Mrs", lastName: "Claus"}],
+    input: [{ firstName: "Santa", lastName: "Claus" }, { firstName: "Mrs", lastName: "Claus" }],
     expected: ["Santa Claus", "Mrs Claus"],
     before: 'const result: string[] = ',
     after: ';',
@@ -420,7 +488,7 @@ var levels = [
     instructions: {
       'en': '<p>Use <code>Object.keys()</code> to get all property names from an object. This returns an array of the object\'s own enumerable property names.</p><p>Get all keys from {name: "Santa", age: 1750, home: "North Pole"}: ["name", "age", "home"]</p>',
     },
-    input: {name: "Santa", age: 1750, home: "North Pole"},
+    input: { name: "Santa", age: 1750, home: "North Pole" },
     expected: ["name", "age", "home"],
     before: 'const result: string[] = ',
     after: ';',
@@ -433,7 +501,7 @@ var levels = [
     instructions: {
       'en': '<p>Use <code>Object.values()</code> to get all property values from an object. This returns an array of the object\'s own enumerable property values.</p><p>Get all values from {name: "Santa", age: 1750, home: "North Pole"}: ["Santa", 1750, "North Pole"]</p>',
     },
-    input: {name: "Santa", age: 1750, home: "North Pole"},
+    input: { name: "Santa", age: 1750, home: "North Pole" },
     expected: ["Santa", 1750, "North Pole"],
     before: 'const result: (string | number)[] = ',
     after: ';',
@@ -446,7 +514,7 @@ var levels = [
     instructions: {
       'en': '<p>Use <code>Object.entries()</code> to get key-value pairs from an object. This returns an array of [key, value] pairs.</p><p>Get entries from {a: 1, b: 2, c: 3}: [["a", 1], ["b", 2], ["c", 3]]</p>',
     },
-    input: {a: 1, b: 2, c: 3},
+    input: { a: 1, b: 2, c: 3 },
     expected: [["a", 1], ["b", 2], ["c", 3]],
     before: 'const result: [string, number][] = ',
     after: ';',
@@ -472,7 +540,7 @@ var levels = [
     instructions: {
       'en': '<p>Use object destructuring to extract properties. The syntax <code>const {name, age} = obj</code> extracts the <code>name</code> and <code>age</code> properties.</p><p>Extract name and age from {name: "Frosty", age: 5, city: "Snowland"} and return them as an array: ["Frosty", 5]</p>',
     },
-    input: {name: "Frosty", age: 5, city: "Snowland"},
+    input: { name: "Frosty", age: 5, city: "Snowland" },
     expected: ["Frosty", 5],
     before: 'const {name, age}: {name: string, age: number, city: string} = ',
     after: ';\nconst result = [name, age];',
@@ -498,8 +566,8 @@ var levels = [
     instructions: {
       'en': '<p>Use spread operator to merge objects. Later properties override earlier ones. <code>{...obj1, ...obj2}</code> creates a new object with properties from both.</p><p>Merge {a: 1, b: 2} and {b: 3, c: 4}: {a: 1, b: 3, c: 4}</p>',
     },
-    input: {a: 1, b: 2},
-    expected: {a: 1, b: 3, c: 4},
+    input: { a: 1, b: 2 },
+    expected: { a: 1, b: 3, c: 4 },
     before: 'const obj = arr;\n    const obj2 = {b: 3, c: 4};\n    const result: {a: number, b: number, c: number} = ',
     after: ';',
     codeLines: 3,
@@ -563,7 +631,7 @@ var levels = [
     instructions: {
       'en': '<p>Use optional chaining <code>?.</code> to safely access nested properties. If any part is null/undefined, it returns undefined instead of throwing an error.</p><p>Access <code>user.address.city</code> where user might be null. Return the city or "unknown": "NYC"</p>',
     },
-    input: {user: {address: {city: "NYC"}}},
+    input: { user: { address: { city: "NYC" } } },
     expected: "NYC",
     before: 'const data = arr;\n    const result: string | undefined = ',
     after: ';',
@@ -589,7 +657,7 @@ var levels = [
     instructions: {
       'en': '<p>Use template literals (backticks) to create strings with embedded expressions. Use <code>${expression}</code> to interpolate values.</p><p>Create a greeting: "Hello, Rudolph! You are 9 years old." from name="Rudolph" and age=9</p>',
     },
-    input: {name: "Rudolph", age: 9},
+    input: { name: "Rudolph", age: 9 },
     expected: "Hello, Rudolph! You are 9 years old.",
     before: 'const {name, age} = arr;\n    const result: string = ',
     after: ';',
@@ -603,7 +671,7 @@ var levels = [
       'en': '<p>Use <code>Object.fromEntries()</code> to convert an array of [key, value] pairs into an object. This is the inverse of <code>Object.entries()</code>.</p><p>Convert [["name", "Alice"], ["age", 25]] to {name: "Alice", age: 25}</p>',
     },
     input: [["name", "Alice"], ["age", 25]],
-    expected: {name: "Alice", age: 25},
+    expected: { name: "Alice", age: 25 },
     before: 'const result: {name: string, age: number} = ',
     after: ';',
     codeLines: 3,
@@ -615,8 +683,8 @@ var levels = [
     instructions: {
       'en': '<p>Use <code>Object.assign()</code> to copy properties from one or more source objects to a target object. <code>Object.assign(target, ...sources)</code> returns the target object. Use an empty object <code>{}</code> as the first argument to create a new object.</p><p>Merge {a: 1} and {b: 2} into a new object: {a: 1, b: 2}</p>',
     },
-    input: {a: 1},
-    expected: {a: 1, b: 2},
+    input: { a: 1 },
+    expected: { a: 1, b: 2 },
     before: 'const obj = arr;\n    const source = {b: 2};\n    const result: {a: number, b: number} = ',
     after: ';',
     codeLines: 3,
@@ -641,7 +709,7 @@ var levels = [
     instructions: {
       'en': '<p>Create a closure: a function that returns another function. The inner function has access to variables in the outer function\'s scope even after the outer function returns.</p><p>Create a function that takes a multiplier and returns a function that multiplies a number by that multiplier. Then call it with multiplier=3 and number=4: 12</p>',
     },
-    input: {multiplier: 3, number: 4},
+    input: { multiplier: 3, number: 4 },
     expected: 12,
     before: 'const {multiplier, number} = arr;\n    const createMultiplier = (mult: number) => (n: number) => n * mult;\n    const multiply = createMultiplier(multiplier);\n    const result: number = ',
     after: ';',
@@ -706,7 +774,7 @@ var levels = [
     instructions: {
       'en': '<p>Access nested object properties and transform them. Combine object methods with array methods to process complex data structures.</p><p>From [{user: {name: "Alice", scores: [10, 20]}}, {user: {name: "Bob", scores: [15, 25]}}], get all names: ["Alice", "Bob"]</p>',
     },
-    input: [{user: {name: "Alice", scores: [10, 20]}}, {user: {name: "Bob", scores: [15, 25]}}],
+    input: [{ user: { name: "Alice", scores: [10, 20] } }, { user: { name: "Bob", scores: [15, 25] } }],
     expected: ["Alice", "Bob"],
     before: 'const result: string[] = ',
     after: ';',
@@ -720,7 +788,7 @@ var levels = [
       'en': '<p>Use computed property names in objects with square brackets <code>[key]</code>. This allows you to use variables or expressions as property names.</p><p>Create an object with a dynamic key: {dynamicKey: "value"}</p>',
     },
     input: "dynamicKey",
-    expected: {dynamicKey: "value"},
+    expected: { dynamicKey: "value" },
     before: 'const key = arr;\n    const result: {[key: string]: string} = ',
     after: ';',
     codeLines: 3,
@@ -732,8 +800,8 @@ var levels = [
     instructions: {
       'en': '<p>Combine array methods with Object methods. Use <code>Object.entries()</code> to convert an object to an array, process it, then convert back with <code>Object.fromEntries()</code>.</p><p>Double all values in {a: 1, b: 2, c: 3}: {a: 2, b: 4, c: 6}</p>',
     },
-    input: {a: 1, b: 2, c: 3},
-    expected: {a: 2, b: 4, c: 6},
+    input: { a: 1, b: 2, c: 3 },
+    expected: { a: 2, b: 4, c: 6 },
     before: 'const obj = arr;\n    const result: {a: number, b: number, c: number} = ',
     after: ';',
     codeLines: 3,
@@ -758,7 +826,7 @@ var levels = [
     instructions: {
       'en': '<p>Filter an array of objects and transform the results. Combine <code>filter()</code> and <code>map()</code> to process complex data.</p><p>From [{name: "Prancer", age: 150}, {name: "Vixen", age: 140}, {name: "Baby Reindeer", age: 1}], get names of reindeer 100 or older: ["Prancer", "Vixen"]</p>',
     },
-    input: [{name: "Prancer", age: 150}, {name: "Vixen", age: 140}, {name: "Baby Reindeer", age: 1}],
+    input: [{ name: "Prancer", age: 150 }, { name: "Vixen", age: 140 }, { name: "Baby Reindeer", age: 1 }],
     expected: ["Prancer", "Vixen"],
     before: 'const result: string[] = ',
     after: ';',
@@ -772,7 +840,7 @@ var levels = [
       'en': '<p>Use <code>reduce()</code> to transform an array into an object. This is useful for creating lookup tables or grouping data.</p><p>From [["a", 1], ["b", 2], ["c", 3]], create an object: {a: 1, b: 2, c: 3}</p>',
     },
     input: [["a", 1], ["b", 2], ["c", 3]],
-    expected: {a: 1, b: 2, c: 3},
+    expected: { a: 1, b: 2, c: 3 },
     before: 'const result: Record<string, number> = ',
     after: ';',
     codeLines: 3,
@@ -785,7 +853,7 @@ var levels = [
       'en': '<p>Use <code>reduce</code> to create a frequency map (count occurrences of each item). Start with an empty object <code>{}</code>.</p><p>Count occurrences of letters in ["a", "b", "a", "c", "b", "a"]: {a: 3, b: 2, c: 1}</p>',
     },
     input: ["a", "b", "a", "c", "b", "a"],
-    expected: {a: 3, b: 2, c: 1},
+    expected: { a: 3, b: 2, c: 1 },
     before: 'const result: Record<string, number> = ',
     after: ';',
     codeLines: 5,
@@ -797,8 +865,8 @@ var levels = [
     instructions: {
       'en': '<p>Use <code>reduce</code> to group objects by a property. Initialize with an empty object.</p><p>Group by "type": {A: [{id: 1, type: "A"}, {id: 3, type: "A"}], B: [{id: 2, type: "B"}]}</p>',
     },
-    input: [{id: 1, type: 'A'}, {id: 2, type: 'B'}, {id: 3, type: 'A'}],
-    expected: {A: [{id: 1, type: 'A'}, {id: 3, type: 'A'}], B: [{id: 2, type: 'B'}]},
+    input: [{ id: 1, type: 'A' }, { id: 2, type: 'B' }, { id: 3, type: 'A' }],
+    expected: { A: [{ id: 1, type: 'A' }, { id: 3, type: 'A' }], B: [{ id: 2, type: 'B' }] },
     before: 'const result: Record<string, {id: number, type: string}[]> = ',
     after: ';',
     codeLines: 6,
@@ -836,8 +904,8 @@ var levels = [
     instructions: {
       'en': '<p>Remove duplicate objects based on a property (e.g., "id"). You can use a <code>Map</code> or <code>reduce</code>/<code>filter</code> with an auxiliary Set.</p><p>Get unique objects by ID: [{id: 1, val: "a"}, {id: 2, val: "b"}]</p>',
     },
-    input: [{id: 1, val: 'a'}, {id: 2, val: 'b'}, {id: 1, val: 'c'}],
-    expected: [{id: 1, val: 'a'}, {id: 2, val: 'b'}],
+    input: [{ id: 1, val: 'a' }, { id: 2, val: 'b' }, { id: 1, val: 'c' }],
+    expected: [{ id: 1, val: 'a' }, { id: 2, val: 'b' }],
     before: 'const result: {id: number, val: string}[] = ',
     after: ';',
     codeLines: 5,
@@ -940,21 +1008,22 @@ var levels = [
     instructions: {
       'en': '<p>TypeScript\'s <code>Pick&lt;T, K&gt;</code> creates a type by picking a set of properties <code>K</code> from <code>T</code>. In runtime JS, we can implement a <code>pick</code> function.</p><p>Create a new object with only the "a" and "c" properties from {a: 1, b: 2, c: 3}.</p>',
     },
-    input: {a: 1, b: 2, c: 3},
-    expected: {a: 1, c: 3},
+    input: { a: 1, b: 2, c: 3 },
+    expected: { a: 1, c: 3 },
     before: 'const keys = ["a", "c"];\n    const result: {a: number, c: number} = ',
     after: ';',
     codeLines: 5,
     mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys',
-    mdnName: 'Pick<Type, Keys>'
+    mdnName: 'Pick<Type, Keys>',
+    solution: 'interface MyPick { title: string; completed: boolean; }'
   },
   {
     name: 'Omit',
     instructions: {
       'en': '<p>TypeScript\'s <code>Omit&lt;T, K&gt;</code> creates a type by removing properties <code>K</code> from <code>T</code>. In JS, we can implement an <code>omit</code> function.</p><p>Create a new object without the "b" property from {a: 1, b: 2, c: 3}.</p>',
     },
-    input: {a: 1, b: 2, c: 3},
-    expected: {a: 1, c: 3},
+    input: { a: 1, b: 2, c: 3 },
+    expected: { a: 1, c: 3 },
     before: 'const keyToOmit = "b";\n    const result: {a: number, c: number} = ',
     after: ';',
     codeLines: 5,
@@ -966,8 +1035,8 @@ var levels = [
     instructions: {
       'en': '<p>TypeScript\'s <code>Partial&lt;T&gt;</code> sets all properties of <code>T</code> to optional. In JS, this is often used when updating an object with a subset of properties.</p><p>Update {a: 1, b: 2} with {b: 3} using object spread syntax.</p>',
     },
-    input: {a: 1, b: 2},
-    expected: {a: 1, b: 3},
+    input: { a: 1, b: 2 },
+    expected: { a: 1, b: 3 },
     before: 'const update = {b: 3};\n    const result: {a: number, b: number} = ',
     after: ';',
     codeLines: 3,
@@ -979,8 +1048,8 @@ var levels = [
     instructions: {
       'en': '<p>TypeScript\'s <code>Readonly&lt;T&gt;</code> marks all properties as readonly. In JS, <code>Object.freeze()</code> prevents modification of existing properties.</p><p>Freeze the object {a: 1} so it cannot be changed.</p>',
     },
-    input: {a: 1},
-    expected: {a: 1},
+    input: { a: 1 },
+    expected: { a: 1 },
     before: 'const result: Readonly<{a: number}> = ',
     after: ';',
     codeLines: 3,
@@ -993,7 +1062,7 @@ var levels = [
       'en': '<p>TypeScript\'s <code>Record&lt;K, T&gt;</code> constructs an object type with keys <code>K</code> and values <code>T</code>. In JS, we can build an object from a list of keys.</p><p>Create an object where keys ["a", "b"] map to value 0: {a: 0, b: 0}</p>',
     },
     input: ["a", "b"],
-    expected: {a: 0, b: 0},
+    expected: { a: 0, b: 0 },
     before: 'const value = 0;\n    const result: Record<string, number> = ',
     after: ';',
     codeLines: 5,
@@ -1011,7 +1080,8 @@ var levels = [
     after: ';',
     codeLines: 4,
     mdn: 'https://www.typescriptlang.org/docs/handbook/2/objects.html#tuple-types',
-    mdnName: 'Tuple Types'
+    mdnName: 'Tuple Types',
+    solution: 'const result: boolean = (arr.length === 2 && typeof arr[0] === "number" && typeof arr[1] === "string");'
   },
   {
     name: 'findIndex',
@@ -1024,7 +1094,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex',
-    mdnName: 'Array.prototype.findIndex()'
+    mdnName: 'Array.prototype.findIndex()',
+    solution: 'arr.findIndex(x => x > 10)'
   },
   {
     name: 'fill',
@@ -1037,7 +1108,302 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill',
-    mdnName: 'Array.prototype.fill()'
+    mdnName: 'Array.prototype.fill()',
+    solution: 'arr.fill(0)'
+  },
+  {
+    name: 'recursive step 1',
+    instructions: {
+      'en': '<p>We are going to learn how to traverse complex data. First, let\'s access a nested property using a path array.</p><p>Input is <code>{a: {b: {c: 1}}}</code> and path is <code>["a", "b", "c"]</code>.</p><p>Write code to access <code>data[path[0]][path[1]]...</code> dynamically. You can use <code>reduce</code>.</p>',
+    },
+    input: { data: { a: { b: { c: 1 } } }, path: ['a', 'b', 'c'] },
+    expected: 1,
+    before: 'const { data, path } = arr;\n    const result = ',
+    after: ';',
+    codeLines: 5,
+    mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
+    mdnName: 'Recursive Traversal Step 1',
+    solution: 'arr.path.reduce((acc, key) => acc[key], arr.data)'
+  },
+  {
+    name: 'recursive step 2',
+    instructions: {
+      'en': '<p>Now, let\'s do the same thing using <strong>recursion</strong>.</p><p>Write a function <code>traverse(currentData, index)</code>. If <code>index === path.length</code>, return <code>currentData</code>. Else return <code>traverse(currentData[path[index]], index + 1)</code>.</p><p>Input: <code>{val: 100}</code> path <code>["val"]</code>.</p>',
+    },
+    input: { data: { val: 100 }, path: ['val'] },
+    expected: 100,
+    before: 'const { data, path } = arr;\n    const traverse = (currentData: any, index: number): any => {\n',
+    after: '\n    };\n    const result = traverse(data, 0);',
+    codeLines: 8,
+    mdn: '',
+    mdnName: 'Recursive Traversal Step 2',
+    solution: '    if (index === path.length) return currentData;\n      return traverse(currentData[path[index]], index + 1);'
+  },
+  {
+    name: 'recursive step 3',
+    instructions: {
+      'en': '<p>What if the data structure contains an array? We need to "branch" out and traverse into <strong>every</strong> item in the array.</p><p>Input: <code>[{id: 1}, {id: 2}]</code> (array of objects), key to access: <code>"id"</code>.</p><p>Use <code>map</code> to access the key on every item.</p>',
+    },
+    input: [{ id: 1 }, { id: 2 }],
+    expected: [1, 2],
+    before: 'const key = "id";\n    const result = ',
+    after: ';',
+    codeLines: 5,
+    mdn: '',
+    mdnName: 'Recursive Traversal Step 3',
+    solution: 'arr.map(item => item[key])'
+  },
+  {
+    name: 'recursive step 4',
+    instructions: {
+      'en': '<p>Let\'s combine them. We have an object that contains an array. <code>{ items: [{val: 10}, {val: 20}] }</code>. Path: <code>["items", "val"]</code>.</p><p>1. Access "items" -> gets the array.</p><p>2. Map over the array -> gets values.</p>',
+    },
+    input: { items: [{ val: 10 }, { val: 20 }] },
+    expected: [10, 20],
+    before: 'const path = ["items", "val"];\n    // 1. Get the array "items"\n    const array = arr[path[0]];\n    // 2. Map to get "val"\n    const result = ',
+    after: ';',
+    codeLines: 5,
+    mdn: '',
+    mdnName: 'Recursive Traversal Step 4',
+    solution: 'arr[path[0]].map(item => item[path[1]])'
+  },
+  {
+    name: 'interview challenge',
+    instructions: {
+      'en': '<p><strong>Final Challenge!</strong> Implement the full <code>traverse</code> function.</p><p>It should handle both objects (step down) and arrays (map/recurse). Collect all values at the end of the path.</p><p>Path: <code>["account", "policy", "locations", "buildings", "tiv"]</code></p>',
+    },
+    input: {
+      account: {
+        id: 6,
+        account_name: "Family Praise Worship Center",
+        main_address: "5308 W Wisteria Pl",
+        main_zip_code: "92704-1836",
+        main_city: "Santa Ana",
+        policy: {
+          nb_account_id: 6,
+          id: 860,
+          policy_number: "1663712",
+          effective_date: "2019-12-19",
+          expiration_date: "2020-12-18",
+          locations: [
+            {
+              policy_id: 860,
+              id: 237,
+              location_number: "6",
+              name: "Family Praise Worship Center",
+              address: "5308 W Wisteria Pl",
+              buildings: [
+                {
+                  policy_location_id: 1807,
+                  location_building_id: 531,
+                  location_id: 237,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5308 W Wisteria Pl",
+                  cost: 2304095,
+                  id: 860,
+                  building_id: "535",
+                  tiv: 1754979,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1807,
+                  location_building_id: 532,
+                  location_id: 237,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5308 W Wisteria Pl",
+                  cost: 201283,
+                  id: 860,
+                  building_id: "532",
+                  tiv: 1298921,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1807,
+                  location_building_id: 533,
+                  location_id: 237,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5308 W Wisteria Pl",
+                  cost: 8655738,
+                  id: 860,
+                  building_id: "534",
+                  tiv: 1442051,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1807,
+                  location_building_id: 534,
+                  location_id: 237,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5308 W Wisteria Pl",
+                  cost: 1082846,
+                  id: 860,
+                  building_id: "531",
+                  tiv: 1183358,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1807,
+                  location_building_id: 535,
+                  location_id: 237,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5308 W Wisteria Pl",
+                  cost: 8116968,
+                  id: 860,
+                  building_id: "533",
+                  tiv: 1212126,
+                  construction_type: "2-NC",
+                },
+              ],
+            },
+            {
+              policy_id: 860,
+              id: 238,
+              location_number: "7",
+              name: "Freedom Worship Center",
+              address: "5410 Ripple Cove Way",
+              buildings: [
+                {
+                  policy_location_id: 1808,
+                  location_building_id: 536,
+                  location_id: 238,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5410 Ripple Cove Way",
+                  cost: 7103834,
+                  id: 860,
+                  building_id: "536",
+                  tiv: 1958428,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1808,
+                  location_building_id: 537,
+                  location_id: 238,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5410 Ripple Cove Way",
+                  cost: 6443604,
+                  id: 860,
+                  building_id: "537",
+                  tiv: 1997468,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1808,
+                  location_building_id: 538,
+                  location_id: 238,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5410 Ripple Cove Way",
+                  cost: 7045627,
+                  id: 860,
+                  building_id: "540",
+                  tiv: 2029933,
+                  construction_type: "4MNC, SM",
+                },
+                {
+                  policy_location_id: 1808,
+                  location_building_id: 539,
+                  location_id: 238,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5410 Ripple Cove Way",
+                  cost: 3821346,
+                  id: 860,
+                  building_id: "539",
+                  tiv: 1983871,
+                  construction_type: "4MNC, SM",
+                },
+                {
+                  policy_location_id: 1808,
+                  location_building_id: 540,
+                  location_id: 238,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "5410 Ripple Cove Way",
+                  cost: 8557187,
+                  id: 860,
+                  building_id: "538",
+                  tiv: 1910437,
+                  construction_type: "4MNC, SM",
+                },
+              ],
+            },
+            {
+              policy_id: 860,
+              id: 239,
+              location_number: "8",
+              name: "Faith Life Church",
+              address: "912 Mesa St",
+              buildings: [
+                {
+                  policy_location_id: 1809,
+                  location_building_id: 541,
+                  location_id: 239,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "912 Mesa St",
+                  cost: 3255325,
+                  id: 860,
+                  building_id: "545",
+                  tiv: 2423784,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1809,
+                  location_building_id: 542,
+                  location_id: 239,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "912 Mesa St",
+                  cost: 7082818,
+                  id: 860,
+                  building_id: "542",
+                  tiv: 1843740,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1809,
+                  location_building_id: 543,
+                  location_id: 239,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "912 Mesa St",
+                  cost: 8950933,
+                  id: 860,
+                  building_id: "544",
+                  tiv: 2197907,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1809,
+                  location_building_id: 544,
+                  location_id: 239,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "912 Mesa St",
+                  cost: 1840616,
+                  id: 860,
+                  building_id: "541",
+                  tiv: 2270340,
+                  construction_type: "2-NC",
+                },
+                {
+                  policy_location_id: 1809,
+                  location_building_id: 545,
+                  location_id: 239,
+                  date_added: "2000-01-01T23:55:59.342Z",
+                  address: "912 Mesa St",
+                  cost: 5867473,
+                  id: 860,
+                  building_id: "543",
+                  tiv: 1259916,
+                  construction_type: "2-NC",
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
+    expected: [1754979, 1298921, 1442051, 1183358, 1212126, 1958428, 1997468, 2029933, 1983871, 1910437, 2423784, 1843740, 2197907, 2270340, 1259916],
+    before: 'const path = ["account", "policy", "locations", "buildings", "tiv"];\n    const traverse = (data: any, index: number): any[] => {\n      if (index === path.length) return [data];\n      const key = path[index];\n      if (Array.isArray(data)) {\n        return data.flatMap(item => traverse(item, index)); \n      }\n      // Your code here for object traversal\n      return \n',
+    after: '\n    };\n    const result = traverse(arr, 0);',
+    codeLines: 10,
+    mdn: '',
+    mdnName: 'Recursive Traversal Final',
+    solution: 'if (index === path.length) {\n        if (Array.isArray(data)) return data; \n        return [data];\n      }\n      const key = path[index];\n      if (Array.isArray(data)) {\n        return data.flatMap(item => traverse(item, index)); \n      }\n      if (data && typeof data === "object" && key in data) {\n         return traverse(data[key], index + 1);\n      }\n      return [];'
   }
 ];
 
