@@ -363,7 +363,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-    mdnName: 'Array.prototype.map()'
+    mdnName: 'Array.prototype.map()',
+    solution: 'arr.map(x => x.toUpperCase())'
   },
   {
     name: 'filter 3',
@@ -376,7 +377,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
-    mdnName: 'Array.prototype.filter()'
+    mdnName: 'Array.prototype.filter()',
+    solution: 'arr.filter(x => x > 3 && x < 8)'
   },
   {
     name: 'reduce 2',
@@ -389,7 +391,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.reduce((count, x) => x % 2 === 0 ? count + 1 : count, 0)'
   },
   {
     name: 'reduce 3',
@@ -402,7 +405,8 @@ var levels = [
     after: ';',
     codeLines: 5,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.reduce((acc, item) => ({...acc, [item.type]: (acc[item.type] || 0) + 1}), {})'
   },
   {
     name: 'find 2',
@@ -415,7 +419,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find',
-    mdnName: 'Array.prototype.find()'
+    mdnName: 'Array.prototype.find()',
+    solution: 'arr.find(x => x.age > 25)'
   },
   {
     name: 'map filter reduce',
@@ -428,7 +433,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.map(x => x * 2).filter(x => x >= 10).reduce((sum, x) => sum + x, 0)'
   },
   {
     name: 'flatMap',
@@ -455,7 +461,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-    mdnName: 'Array.prototype.map()'
+    mdnName: 'Array.prototype.map()',
+    solution: 'arr.map(subArr => subArr[0])'
   },
   {
     name: 'real world 1',
@@ -468,7 +475,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.reduce((sum, item) => item.price > 10 ? sum + item.price : sum, 0)'
   },
   {
     name: 'real world 2',
@@ -481,7 +489,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-    mdnName: 'Array.prototype.map()'
+    mdnName: 'Array.prototype.map()',
+    solution: 'arr.map(user => `${user.firstName} ${user.lastName}`)'
   },
   {
     name: 'object keys',
@@ -494,7 +503,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys',
-    mdnName: 'Object.keys()'
+    mdnName: 'Object.keys()',
+    solution: 'Object.keys(arr)'
   },
   {
     name: 'object values',
@@ -507,7 +517,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values',
-    mdnName: 'Object.values()'
+    mdnName: 'Object.values()',
+    solution: 'Object.values(arr)'
   },
   {
     name: 'object entries',
@@ -520,7 +531,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries',
-    mdnName: 'Object.entries()'
+    mdnName: 'Object.entries()',
+    solution: 'Object.entries(arr)'
   },
   {
     name: 'destructuring arrays',
@@ -533,7 +545,8 @@ var levels = [
     after: ';\nconst result = [first, second];',
     codeLines: 4,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment',
-    mdnName: 'Destructuring assignment'
+    mdnName: 'Destructuring assignment',
+    solution: 'arr'
   },
   {
     name: 'destructuring objects',
@@ -546,7 +559,8 @@ var levels = [
     after: ';\nconst result = [name, age];',
     codeLines: 4,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment',
-    mdnName: 'Destructuring assignment'
+    mdnName: 'Destructuring assignment',
+    solution: 'arr'
   },
   {
     name: 'spread operator',
@@ -559,7 +573,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax',
-    mdnName: 'Spread syntax'
+    mdnName: 'Spread syntax',
+    solution: '[...arr, ...arr2]'
   },
   {
     name: 'spread objects',
@@ -572,7 +587,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax',
-    mdnName: 'Spread syntax'
+    mdnName: 'Spread syntax',
+    solution: '{...obj, ...obj2}'
   },
   {
     name: 'string methods',
@@ -585,7 +601,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split',
-    mdnName: 'String.prototype.split()'
+    mdnName: 'String.prototype.split()',
+    solution: 'arr.toUpperCase().split(" ")'
   },
   {
     name: 'string replace',
@@ -598,7 +615,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace',
-    mdnName: 'String.prototype.replace()'
+    mdnName: 'String.prototype.replace()',
+    solution: 'arr.replaceAll(" ", "-")'
   },
   {
     name: 'sets',
@@ -611,7 +629,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set',
-    mdnName: 'Set'
+    mdnName: 'Set',
+    solution: '[...new Set(arr)]'
   },
   {
     name: 'maps',
@@ -624,7 +643,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map',
-    mdnName: 'Map'
+    mdnName: 'Map',
+    solution: 'Array.from(new Map(arr))'
   },
   {
     name: 'optional chaining',
@@ -637,7 +657,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining',
-    mdnName: 'Optional chaining'
+    mdnName: 'Optional chaining',
+    solution: 'data?.user?.address?.city || "unknown"'
   },
   {
     name: 'nullish coalescing',
@@ -650,7 +671,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing',
-    mdnName: 'Nullish coalescing'
+    mdnName: 'Nullish coalescing',
+    solution: 'value ?? "default"'
   },
   {
     name: 'template literals',
@@ -663,7 +685,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals',
-    mdnName: 'Template literals'
+    mdnName: 'Template literals',
+    solution: '`Hello, ${name}! You are ${age} years old.`'
   },
   {
     name: 'object from entries',
@@ -676,7 +699,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries',
-    mdnName: 'Object.fromEntries()'
+    mdnName: 'Object.fromEntries()',
+    solution: 'Object.fromEntries(arr)'
   },
   {
     name: 'object assign',
@@ -689,7 +713,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign',
-    mdnName: 'Object.assign()'
+    mdnName: 'Object.assign()',
+    solution: 'Object.assign({}, obj, source)'
   },
   {
     name: 'type checking',
@@ -702,7 +727,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof',
-    mdnName: 'typeof'
+    mdnName: 'typeof',
+    solution: 'arr.filter(x => typeof x === "string")'
   },
   {
     name: 'closures',
@@ -715,7 +741,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures',
-    mdnName: 'Closures'
+    mdnName: 'Closures',
+    solution: 'multiply(number)'
   },
   {
     name: 'higher order functions',
@@ -728,7 +755,8 @@ var levels = [
     after: ', x => x * 2);',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function',
-    mdnName: 'First-class Function'
+    mdnName: 'First-class Function',
+    solution: 'arr'
   },
   {
     name: 'recursion basics',
@@ -741,7 +769,8 @@ var levels = [
     after: ');',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Glossary/Recursion',
-    mdnName: 'Recursion'
+    mdnName: 'Recursion',
+    solution: 'n'
   },
   {
     name: 'date manipulation',
@@ -754,7 +783,8 @@ var levels = [
     after: '();',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date',
-    mdnName: 'Date'
+    mdnName: 'Date',
+    solution: 'getFullYear'
   },
   {
     name: 'regex basics',
@@ -767,7 +797,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp',
-    mdnName: 'RegExp'
+    mdnName: 'RegExp',
+    solution: 'str.match(/\\d+/g)'
   },
   {
     name: 'nested object access',
@@ -780,7 +811,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects',
-    mdnName: 'Working with Objects'
+    mdnName: 'Working with Objects',
+    solution: 'arr.map(x => x.user.name)'
   },
   {
     name: 'computed properties',
@@ -793,7 +825,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer',
-    mdnName: 'Object initializer'
+    mdnName: 'Object initializer',
+    solution: '{[key]: "value"}'
   },
   {
     name: 'array methods with objects',
@@ -806,7 +839,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries',
-    mdnName: 'Object.entries()'
+    mdnName: 'Object.entries()',
+    solution: 'Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, v * 2]))'
   },
   {
     name: 'string manipulation advanced',
@@ -819,7 +853,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split',
-    mdnName: 'String.prototype.split()'
+    mdnName: 'String.prototype.split()',
+    solution: 'str.split(" ").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")'
   },
   {
     name: 'filter and transform objects',
@@ -832,7 +867,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
-    mdnName: 'Array.prototype.filter()'
+    mdnName: 'Array.prototype.filter()',
+    solution: 'arr.filter(r => r.age >= 100).map(r => r.name)'
   },
   {
     name: 'reduce with objects',
@@ -845,7 +881,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.reduce((acc, [k, v]) => ({...acc, [k]: v}), {})'
   },
   {
     name: 'frequency map',
@@ -858,7 +895,8 @@ var levels = [
     after: ';',
     codeLines: 5,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.reduce((acc, char) => ({...acc, [char]: (acc[char] || 0) + 1}), {})'
   },
   {
     name: 'group by',
@@ -871,7 +909,8 @@ var levels = [
     after: ';',
     codeLines: 6,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.reduce((acc, item) => ({...acc, [item.type]: [...(acc[item.type] || []), item]}), {})'
   },
   {
     name: 'intersection',
@@ -884,7 +923,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
-    mdnName: 'Array.prototype.filter()'
+    mdnName: 'Array.prototype.filter()',
+    solution: 'arr.filter(x => arr2.includes(x))'
   },
   {
     name: 'difference',
@@ -897,7 +937,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
-    mdnName: 'Array.prototype.filter()'
+    mdnName: 'Array.prototype.filter()',
+    solution: 'arr.filter(x => !arr2.includes(x))'
   },
   {
     name: 'unique objects',
@@ -910,7 +951,8 @@ var levels = [
     after: ';',
     codeLines: 5,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set',
-    mdnName: 'Set'
+    mdnName: 'Set',
+    solution: '[...new Map(arr.map(item => [item.id, item])).values()]'
   },
   {
     name: 'zip',
@@ -923,7 +965,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-    mdnName: 'Array.prototype.map()'
+    mdnName: 'Array.prototype.map()',
+    solution: 'arr.map((k, i) => [k, arr2[i]])'
   },
   {
     name: 'partition',
@@ -936,7 +979,8 @@ var levels = [
     after: ';',
     codeLines: 5,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'arr.reduce(([pass, fail], x) => x % 2 !== 0 ? [[...pass, x], fail] : [pass, [...fail, x]], [[], []])'
   },
   {
     name: 'flatten deep',
@@ -949,7 +993,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat',
-    mdnName: 'Array.prototype.flat()'
+    mdnName: 'Array.prototype.flat()',
+    solution: 'arr.flat(Infinity)'
   },
   {
     name: 'most frequent',
@@ -962,7 +1007,8 @@ var levels = [
     after: ';',
     codeLines: 6,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Array.prototype.reduce()'
+    mdnName: 'Array.prototype.reduce()',
+    solution: 'parseInt(Object.entries(arr.reduce((acc, x) => ({...acc, [x]: (acc[x] || 0) + 1}), {})).reduce((a, b) => a[1] > b[1] ? a : b)[0])'
   },
   {
     name: 'valid anagram',
@@ -975,7 +1021,8 @@ var levels = [
     after: ';',
     codeLines: 4,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
-    mdnName: 'Array.prototype.sort()'
+    mdnName: 'Array.prototype.sort()',
+    solution: 'arr.split("").sort().join("") === str2.split("").sort().join("")'
   },
   {
     name: 'chunk',
@@ -988,7 +1035,8 @@ var levels = [
     after: ';',
     codeLines: 6,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
-    mdnName: 'Array.prototype.slice()'
+    mdnName: 'Array.prototype.slice()',
+    solution: 'arr.reduce((acc, _, i) => i % size === 0 ? [...acc, arr.slice(i, i + size)] : acc, [])'
   },
   {
     name: 'merge sorted',
@@ -1001,7 +1049,8 @@ var levels = [
     after: ';',
     codeLines: 5,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat',
-    mdnName: 'Array.prototype.concat()'
+    mdnName: 'Array.prototype.concat()',
+    solution: 'arr.concat(arr2).sort((a, b) => a - b)'
   },
   {
     name: 'Pick',
@@ -1015,7 +1064,7 @@ var levels = [
     codeLines: 5,
     mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys',
     mdnName: 'Pick<Type, Keys>',
-    solution: 'interface MyPick { title: string; completed: boolean; }'
+    solution: '(({a, c}) => ({a, c}))(arr)'
   },
   {
     name: 'Omit',
@@ -1028,7 +1077,8 @@ var levels = [
     after: ';',
     codeLines: 5,
     mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys',
-    mdnName: 'Omit<Type, Keys>'
+    mdnName: 'Omit<Type, Keys>',
+    solution: '(({b, ...rest}) => rest)(arr)'
   },
   {
     name: 'Partial',
@@ -1041,7 +1091,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype',
-    mdnName: 'Partial<Type>'
+    mdnName: 'Partial<Type>',
+    solution: '{...arr, ...update}'
   },
   {
     name: 'Readonly',
@@ -1054,7 +1105,8 @@ var levels = [
     after: ';',
     codeLines: 3,
     mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype',
-    mdnName: 'Readonly<Type>'
+    mdnName: 'Readonly<Type>',
+    solution: 'Object.freeze(arr)'
   },
   {
     name: 'Record',
@@ -1067,7 +1119,8 @@ var levels = [
     after: ';',
     codeLines: 5,
     mdn: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
-    mdnName: 'Record<Keys, Type>'
+    mdnName: 'Record<Keys, Type>',
+    solution: 'arr.reduce((acc, key) => ({...acc, [key]: value}), {})'
   },
   {
     name: 'Tuple',
@@ -1398,12 +1451,12 @@ var levels = [
       },
     },
     expected: [1754979, 1298921, 1442051, 1183358, 1212126, 1958428, 1997468, 2029933, 1983871, 1910437, 2423784, 1843740, 2197907, 2270340, 1259916],
-    before: 'const path = ["account", "policy", "locations", "buildings", "tiv"];\n    const traverse = (data: any, index: number): any[] => {\n      if (index === path.length) return [data];\n      const key = path[index];\n      if (Array.isArray(data)) {\n        return data.flatMap(item => traverse(item, index)); \n      }\n      // Your code here for object traversal\n      return \n',
+    before: 'const path = ["account", "policy", "locations", "buildings", "tiv"];\n    const traverse = (data: any, index: number): any[] => {\n      if (index === path.length) return [data];\n      const key = path[index];\n      if (Array.isArray(data)) {\n        return data.flatMap(item => traverse(item, index)); \n      }\n      // Your code here for object traversal\n      return ',
     after: '\n    };\n    const result = traverse(arr, 0);',
     codeLines: 10,
     mdn: '',
     mdnName: 'Recursive Traversal Final',
-    solution: 'if (index === path.length) {\n        if (Array.isArray(data)) return data; \n        return [data];\n      }\n      const key = path[index];\n      if (Array.isArray(data)) {\n        return data.flatMap(item => traverse(item, index)); \n      }\n      if (data && typeof data === "object" && key in data) {\n         return traverse(data[key], index + 1);\n      }\n      return [];'
+    solution: '(data && data[key]) ? traverse(data[key], index + 1) : []'
   }
 ];
 
