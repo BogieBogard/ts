@@ -1175,7 +1175,7 @@ var levels = [
     after: ';',
     codeLines: 5,
     mdn: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce',
-    mdnName: 'Recursive Traversal Step 1',
+    mdnName: 'Array.prototype.reduce()',
     solution: 'arr.path.reduce((acc, key) => acc[key], arr.data)'
   },
   {
