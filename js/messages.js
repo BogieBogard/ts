@@ -440,7 +440,7 @@ var messages = {
     'yo': 'Ṣé o dájú pé o fẹ́ tún ìṣeré náà ṣe?\n\nGbogbo ìtẹ̀sí ìṣeré rẹ̀ tí a fipamọ́ yóò sọnù, a ó sì rán ọ lọ sí ìbẹ̀rẹ̀ ìṣeré.',
   },
   gridGarden: {
-    'en': 'Want a hint? Read the MDN page for ',
+    'en': 'Want a hint? Read the page for ',
     'af': 'Wil jy \'n wenk hê? Lees die MDN-bladsy vir ',
     'gj': 'શું તમને સંકેત જોઈએ છે? માટે MDN પૃષ્ઠ વાંચો ',
     'he': 'רוצה רמז? קרא את דף ה-MDN עבור ',
@@ -637,7 +637,7 @@ var messages = {
     'np': 'बन्द',
     'my': 'ပိတ်ထားသည်',
     'yo': 'Paà',
- },
+  },
   labelColorblindOn: {
     'en': 'On',
     'af': 'Aan',
