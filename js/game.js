@@ -180,9 +180,7 @@ var game = {
       game.translate();
 
       $('#tweet iframe').remove();
-      var html = '<a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="https://flexboxfroggy.com" data-via="thomashpark">Tweet</a> ' +
-        '<a href="https://twitter.com/thomashpark" class="twitter-follow-button" data-show-count="false">Follow @thomashpark</a>';
-      $('#tweet').html(html);
+      $('#tweet').html('');
 
       if (typeof twttr !== 'undefined') {
         twttr.widgets.load();
@@ -481,14 +479,7 @@ var game = {
             left: tooltipX
           }).appendTo($('#instructions'));
 
-          var getDefaultPropVal = (pValue) => {
-            if (pValue == '<integer>')
-              return '0';
-            else if (pValue == '<flex-direction>')
-              return 'row nowrap';
 
-            return pValue;
-          };
 
           $('#instructions .tooltip code').on('click', function (event) {
             var methodName = text;
