@@ -9,7 +9,7 @@ var levels = [
     before: 'const name: string = ',
     after: ';\nconst result = name;',
     codeLines: 3,
-    mdn: 'https://www.typescriptlang.org/docs/handbook/basic-types.html',
+    mdn: 'https://www.typescriptlang.org/docs/handbook/2/everyday-types.html',
     mdnName: 'TypeScript Basic Types',
     solution: 'const name: string = "Snowman";'
   },
@@ -23,7 +23,7 @@ var levels = [
     before: 'interface Reindeer { name: string; noseColor: string; }\n\nconst reindeer: Reindeer = ',
     after: ';\nconst result = reindeer;',
     codeLines: 5,
-    mdn: 'https://www.typescriptlang.org/docs/handbook/interfaces.html',
+    mdn: 'https://www.typescriptlang.org/docs/handbook/2/objects.html',
     mdnName: 'TypeScript Interfaces',
     solution: 'const reindeer: Reindeer = { name: "Rudolph", noseColor: "red" };'
   },
@@ -37,7 +37,7 @@ var levels = [
     before: 'interface Gift { name: string; weight?: number; }\n\nconst gift: Gift = ',
     after: ';\nconst result = gift;',
     codeLines: 5,
-    mdn: 'https://www.typescriptlang.org/docs/handbook/interfaces.html#optional-properties',
+    mdn: 'https://www.typescriptlang.org/docs/handbook/2/objects.html',
     mdnName: 'Optional Properties',
     solution: 'const gift: Gift = { name: "Toy Train" };'
   },
