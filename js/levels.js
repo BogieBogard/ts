@@ -1472,7 +1472,7 @@ var levels = [
 var levelWin = {
   name: 'win',
   instructions: {
-    'en': '<p>Congratulations! You\'ve completed all the TypeScript (TS) Practice challenges! 🎉</p><p>You\'ve learned how to use <code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>includes</code>, <code>sort</code>, <code>reverse</code>, <code>slice</code>, <code>concat</code>, <code>join</code>, <code>indexOf</code>, <code>flat</code>, <code>flatMap</code>, <code>Pick</code>, <code>Omit</code>, <code>Partial</code>, <code>Readonly</code>, <code>Record</code>, <code>Tuple</code>, <code>findIndex</code>, and <code>fill</code> to solve common coding problems.</p><p>Keep practicing to master these essential array methods!</p>',
+    'en': '<p>Congratulations! You\'ve completed all the TypeScript (TS) Practice challenges! 🎉</p><p>You\'ve learned how to use <code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>includes</code>, <code>sort</code>, <code>reverse</code>, <code>slice</code>, <code>concat</code>, <code>join</code>, <code>indexOf</code>, <code>flat</code>, <code>flatMap</code>, <code>Pick</code>, <code>Omit</code>, <code>Partial</code>, <code>Readonly</code>, <code>Record</code>, <code>Tuple</code>, <code>findIndex</code>, and <code>fill</code> to solve common coding problems.</p><p>If you\'d like to connect and build something great together then please reach out to me on <a href="https://www.linkedin.com/in/matthew-bogard/" target="_blank">LinkedIn</a>!</p>',
   },
   before: '',
   after: ''
