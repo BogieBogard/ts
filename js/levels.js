@@ -425,7 +425,7 @@ var levels = [
   {
     name: 'map filter reduce',
     instructions: {
-      'en': '<p>Chain multiple methods together! Use <code>map</code> to transform, <code>filter</code> to select, and <code>reduce</code> to aggregate.</p><p>From [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], double each number, filter to keep only numbers > 10, then sum them: 90</p>',
+      'en': '<p>Chain multiple methods together! Use <code>map</code> to transform, <code>filter</code> to select, and <code>reduce</code> to aggregate.</p><p>From [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], double each number, filter to keep only numbers greater than or equal to 10, then sum them: 90</p>',
     },
     input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     expected: 90,
