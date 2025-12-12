@@ -305,7 +305,7 @@ var game = {
     var displayHtml = '<div class="code-result">';
 
     if (level.input) {
-      displayHtml += '<div class="input-array"><strong>Input Array:</strong> <code>' + JSON.stringify(level.input) + '</code></div>';
+      displayHtml += '<div class="input-array"><strong>Input:</strong> <code>' + JSON.stringify(level.input) + '</code></div>';
     }
 
     if (level.expected) {
