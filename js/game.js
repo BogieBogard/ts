@@ -1,10 +1,16 @@
+// Each game page sets its own prefix so separate level sets keep separate
+// progress. The TypeScript page leaves it unset to preserve existing saves.
+var STORE = window.GAME_STORAGE_PREFIX || '';
+function storeGet(key) { return localStorage[STORE + key]; }
+function storeSet(key, val) { localStorage.setItem(STORE + key, val); }
+
 var game = {
-  colorblind: (localStorage.colorblind && JSON.parse(localStorage.colorblind)) || 'false',
+  colorblind: (storeGet('colorblind') && JSON.parse(storeGet('colorblind'))) || 'false',
   language: window.location.hash.substring(1) || 'en',
   difficulty: 'easy',
-  level: parseInt(localStorage.level, 10) || 0,
-  answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
-  solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
+  level: parseInt(storeGet('level'), 10) || 0,
+  answers: (storeGet('answers') && JSON.parse(storeGet('answers'))) || {},
+  solved: (storeGet('solved') && JSON.parse(storeGet('solved'))) || [],
   changed: false,
   clickedCode: null,
 
@@ -171,10 +177,10 @@ var game = {
 
     $(window).on('beforeunload', function () {
       game.saveAnswer();
-      localStorage.setItem('level', game.level);
-      localStorage.setItem('answers', JSON.stringify(game.answers));
-      localStorage.setItem('solved', JSON.stringify(game.solved));
-      localStorage.setItem('colorblind', JSON.stringify(game.colorblind));
+      storeSet('level', game.level);
+      storeSet('answers', JSON.stringify(game.answers));
+      storeSet('solved', JSON.stringify(game.solved));
+      storeSet('colorblind', JSON.stringify(game.colorblind));
     }).on('hashchange', function () {
       game.language = window.location.hash.substring(1) || 'en';
       game.translate();
@@ -347,8 +353,8 @@ var game = {
     $('#revealAnswer').text(messages.revealAnswer && messages.revealAnswer[game.language] || 'Reveal Answer');
 
     game.changed = false;
-    game.executeCode();
-    game.check();
+    game.check(); // check() runs executeCode() itself
+
   },
 
   createPondParticles: function () {
@@ -494,7 +500,7 @@ var game = {
     });
   },
 
-  executeCode: function () {
+  executeCode: async function () {
     var level = levels[game.level];
     var code = $('#code').val();
 
@@ -540,6 +546,8 @@ var game = {
         })();
         result = window.__gameResult;
         window.__gameResult = undefined; // Clean up
+        // Streaming levels return a promise — wait for it before comparing.
+        if (result && typeof result.then === 'function') result = await result;
       } catch (evalError) {
         window.__gameResult = undefined; // Clean up on error
         // Log the actual error and code for debugging
@@ -565,15 +573,31 @@ var game = {
 
   check: async function () {
     if (!document.startViewTransition) {
-      game.executeCode();
+      await game.executeCode();
       game.compare();
       return;
     }
 
-    const transition = document.startViewTransition(() => game.executeCode());
+    var ran;
+    const transition = document.startViewTransition(function () {
+      ran = game.executeCode();
+      return ran;
+    });
+    // The browser creates these promises whether or not we use them, and they
+    // reject when a newer keystroke skips this transition. Attach no-op
+    // handlers so a skipped transition isn't reported as an unhandled
+    // rejection. We still await `finished` below for the real control flow.
+    var noop = function () { };
+    if (transition.ready) transition.ready.catch(noop);
+    if (transition.updateCallbackDone) transition.updateCallbackDone.catch(noop);
+    if (transition.finished) transition.finished.catch(noop);
 
     try {
       await transition.finished;
+    } catch (e) {
+      // A newer keystroke superseded this transition. That's expected — just
+      // make sure the code itself finished before we compare.
+      try { await ran; } catch (_) { /* executeCode reports its own errors */ }
     } finally {
       game.compare();
     }
@@ -677,7 +701,10 @@ var game = {
   },
 
   translate: function () {
-    document.title = messages.title[game.language] || messages.title.en;
+    // A page can pin its own title (the streams game does); otherwise use the
+    // shared translated one.
+    document.title = window.GAME_TITLE ||
+      messages.title[game.language] || messages.title.en;
     $('html').attr('lang', game.language);
 
     var level = $('#editor').is(':visible') ? levels[game.level] : levelWin;
