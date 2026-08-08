@@ -432,30 +432,128 @@ var game = {
 
 
 
-  createSuccessSparkles: function () {
-    var sparkleCount = 15;
-    var $pond = $('#pond');
+  // Confetti rains down over the output board. One canvas, reused across
+  // bursts, torn down once the last piece falls past the bottom edge.
+  confetti: {
+    canvas: null,
+    ctx: null,
+    pieces: [],
+    frame: null,
+    last: 0,
+    colors: ['#ffd166', '#ef476f', '#06d6a0', '#4cc9f0', '#b388ff', '#ffffff']
+  },
 
-    for (var i = 0; i < sparkleCount; i++) {
-      var sparkle = $('<div class="pond-sparkle"></div>');
-      var angle = (Math.PI * 2 * i) / sparkleCount;
-      var distance = 50 + Math.random() * 30;
-      var x = Math.cos(angle) * distance;
-      var y = Math.sin(angle) * distance;
+  dropConfetti: function (count) {
+    var board = document.getElementById('board');
+    if (!board) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      sparkle.css({
-        '--sparkle-x': x + 'px',
-        '--sparkle-y': y + 'px',
-        left: '50%',
-        top: '50%'
+    var c = game.confetti;
+    var width = board.clientWidth;
+    var height = board.clientHeight;
+    var dpr = window.devicePixelRatio || 1;
+
+    if (!c.canvas) {
+      c.canvas = document.createElement('canvas');
+      c.canvas.id = 'confetti';
+      board.appendChild(c.canvas);
+      c.ctx = c.canvas.getContext('2d');
+    }
+
+    // The board is sized off the viewport, so re-measure on every burst.
+    c.canvas.width = width * dpr;
+    c.canvas.height = height * dpr;
+    c.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    for (var i = 0; i < count; i++) {
+      var ribbon = Math.random() < 0.25;
+      c.pieces.push({
+        x: Math.random() * width,
+        y: -20 - Math.random() * 40,
+        w: ribbon ? 3 + Math.random() * 2 : 6 + Math.random() * 5,
+        h: ribbon ? 12 + Math.random() * 8 : 5 + Math.random() * 5,
+        color: c.colors[Math.floor(Math.random() * c.colors.length)],
+        // Released over a window rather than all at once, so the confetti
+        // keeps arriving instead of passing as one flat curtain.
+        delay: Math.random() * 1.1,
+        vx: (Math.random() - 0.5) * width * 0.15,
+        vy: height * 0.15,
+        // Speeds are a fraction of board height, so the fall takes the same
+        // couple of seconds whatever the viewport size.
+        gravity: height * 1.1,
+        terminal: height * (0.35 + Math.random() * 0.35),
+        angle: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 8,
+        // Independent phase for the edge-on flip, so pieces don't blink together.
+        tilt: Math.random() * Math.PI * 2,
+        tiltSpeed: 4 + Math.random() * 6,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: 1.5 + Math.random() * 2,
+        wobbleSize: 8 + Math.random() * 14
       });
+    }
 
-      $pond.append(sparkle);
+    if (!c.frame) {
+      c.last = 0;
+      c.frame = window.requestAnimationFrame(game.stepConfetti);
+    }
+  },
 
-      // Remove after animation
-      setTimeout(function () {
-        sparkle.remove();
-      }, 1500);
+  stepConfetti: function (now) {
+    var c = game.confetti;
+    var ctx = c.ctx;
+    var width = c.canvas.width / (window.devicePixelRatio || 1);
+    var height = c.canvas.height / (window.devicePixelRatio || 1);
+
+    // Clamp the step so a backgrounded tab doesn't teleport everything offscreen.
+    var dt = c.last ? Math.min((now - c.last) / 1000, 0.05) : 0.016;
+    c.last = now;
+
+    ctx.clearRect(0, 0, width, height);
+
+    var alive = [];
+    for (var i = 0; i < c.pieces.length; i++) {
+      var p = c.pieces[i];
+
+      if (p.delay > 0) {
+        p.delay -= dt;
+        alive.push(p);
+        continue;
+      }
+
+      // Capped fall speed is what makes paper drift instead of drop like a stone.
+      p.vy = Math.min(p.vy + p.gravity * dt, p.terminal);
+      p.vx *= 0.99;
+      p.wobble += p.wobbleSpeed * dt;
+      p.x += (p.vx + Math.cos(p.wobble) * p.wobbleSize) * dt;
+      p.y += p.vy * dt;
+      p.angle += p.spin * dt;
+      p.tilt += p.tiltSpeed * dt;
+
+      if (p.y > height + 30) continue;
+      alive.push(p);
+
+      // Squashing the height by cos(tilt) reads as a piece tumbling through
+      // the third dimension; the back face is drawn darker.
+      var flip = Math.cos(p.tilt);
+      var fade = p.y > height - 60 ? Math.max(0, (height - p.y) / 60) : 1;
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle);
+      ctx.scale(1, Math.abs(flip) < 0.15 ? 0.15 : Math.abs(flip));
+      ctx.globalAlpha = fade * (flip < 0 ? 0.6 : 1);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    }
+    c.pieces = alive;
+
+    if (c.pieces.length) {
+      c.frame = window.requestAnimationFrame(game.stepConfetti);
+    } else {
+      c.frame = null;
+      ctx.clearRect(0, 0, width, height);
     }
   },
 
@@ -639,17 +737,7 @@ var game = {
   },
 
   triggerSuccessEffects: function () {
-    // Create sparkle effect
-    game.createSuccessSparkles();
-
-    // Enhanced particle burst
-    setTimeout(function () {
-      for (var i = 0; i < 5; i++) {
-        setTimeout(function () {
-          game.createPondParticles();
-        }, i * 200);
-      }
-    }, 100);
+    game.dropConfetti(90);
   },
 
   updateDisplay: function (result) {
@@ -691,6 +779,7 @@ var game = {
     $('#code').val(solution);
     $('#share').show();
     $('.frog .bg').removeClass('pulse').addClass('bounce');
+    game.dropConfetti(200);
   },
 
   transform: function () {
